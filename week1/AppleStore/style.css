@@ -6,11 +6,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: sticky;
+  position: fixed;
 
   width: 100%;
   height: 3rem;
   background-color: #434344;
+
+  z-index: 1;
 }
 
 .logo_wrapper {
@@ -20,16 +22,18 @@
 }
 
 .logo_wrapper > img {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.3rem;
+  height: 1.3rem;
 
   filter: invert(100%) sepia(0%) saturate(7483%) hue-rotate(352deg) brightness(136%) contrast(71%);
 }
 
 .logo_wrapper > h1 {
+  margin: 0;
+
+  color: white;
   font-size: 1.4rem;
   font-weight: 100;
-  color: white;
 }
 
 .btn_hamburger {
@@ -37,12 +41,57 @@
   height: 1rem;
 }
 
+.hamburger_wrapper {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  padding: 2rem;
+  width: 15rem;
+  height: 100vh;
+
+  background-color: white;
+}
+
+.hamburger_menu:hover .hamburger_wrapper {
+  display: block;
+}
+
+.hamburger_wrapper > h2 {
+  margin: 0;
+
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.hamburger_list {
+  padding: 0rem;
+
+  list-style: none;
+}
+
+.hamburger_item {
+  margin-bottom: 1rem;
+
+  font-size: 1.4rem;
+  font-weight: 200;
+}
+
+.hamburger_item:hover {
+  color: #306fdb;
+
+  cursor: pointer;
+}
+
 .category_wrapper {
   display: flex;
   justify-content: center;
 
   height: 6rem;
+  padding-top: 3rem;
 }
+
 .category_list {
   display: flex;
   justify-content: space-around;
@@ -75,11 +124,13 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+
   padding: 0rem 3rem;
 }
 
 .product_card {
   position: relative;
+
   padding: 1rem;
 }
 
@@ -106,16 +157,40 @@
 .product_card:nth-child(2n) > .bookmark > .ic_bookmark {
   filter: invert(100%) sepia(70%) saturate(53%) hue-rotate(336deg) brightness(117%) contrast(100%);
 }
+.product_card:nth-child(2n) > .bookmark > .ic_bookmark:hover {
+  filter: invert(51%) sepia(76%) saturate(5146%) hue-rotate(206deg) brightness(90%) contrast(90%);
+  cursor: pointer;
+}
 
 .product_img {
-  width: 100%;
   padding-bottom: 2rem;
+  width: 100%;
+}
+
+.hashtag_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.hashtag_add {
+  padding: 0.2rem 0.5rem;
+
+  color: #306fdb;
+  background: white;
+  border: 0.05rem solid #306fdb;
+  border-radius: 1rem;
+}
+
+.hashtag_add:hover {
+  color: white;
+  background-color: #306fdb;
 }
 
 .hashtag_list {
   display: flex;
   justify-content: center;
-  width: 150px;
 
   overflow: hidden;
   white-space: nowrap;
@@ -131,9 +206,9 @@
   padding: 0.2rem 0.5rem;
   background-color: #306fdb;
 
+  color: white;
   font-weight: 100;
   font-size: 0.8rem;
-  color: white;
   border-radius: 1rem;
 }
 
@@ -147,4 +222,9 @@
   float: right;
 
   width: 1.5rem;
+}
+
+.ic_bookmark:hover {
+  filter: invert(51%) sepia(76%) saturate(5146%) hue-rotate(206deg) brightness(90%) contrast(90%);
+  cursor: pointer;
 }
