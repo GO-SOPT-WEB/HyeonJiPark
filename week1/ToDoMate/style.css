@@ -26,6 +26,8 @@ html {
 }
 
 header > h1 {
+  padding: 0rem 1rem;
+
   font-family: 'PilseungGothic';
   font-weight: 100;
   font-size: 2rem;
@@ -86,9 +88,13 @@ header > h1 {
 .todolist {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow-y: scroll;
 
   margin-top: 3rem;
   padding: 0rem 2rem;
+  height: 60vh;
 }
 
 .category_title {
@@ -154,6 +160,17 @@ header > h1 {
   padding-top: 1rem;
   background: transparent;
   border: none;
+  border-radius: 1rem;
+
+  box-shadow: 0.2rem 0.4rem 0rem 0rem #161616;
+}
+
+.btn_calendar:active {
+  background-color: #161616;
+}
+
+.btn_my:active {
+  background-color: #161616;
 }
 
 .footer_btn > img {
@@ -163,4 +180,13 @@ header > h1 {
 .footer_btn > p {
   color: #767777;
   font-size: 1rem;
+}
+
+@media all and (max-width: 320px) {
+  .todolist {
+    flex-wrap: nowrap;
+  }
+  .todo_category {
+    flex-basis: 45%;
+  }
 }
