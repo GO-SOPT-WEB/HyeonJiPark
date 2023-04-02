@@ -122,7 +122,7 @@
 
 .product {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
 
   padding: 0rem 3rem;
@@ -227,4 +227,28 @@
 .ic_bookmark:hover {
   filter: invert(51%) sepia(76%) saturate(5146%) hue-rotate(206deg) brightness(90%) contrast(90%);
   cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .product {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .product {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .product {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
