@@ -5,11 +5,18 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+    format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
 
 * {
   box-sizing: border-box;
 
-  font-family: 'PilseungGothic';
+  font-family: 'Pretendard-Regular';
   font-size: 62.5%;
   color: white;
 }
@@ -25,6 +32,48 @@ html {
 }
 
 header > h1 {
+  font-family: 'PilseungGothic';
   font-weight: 100;
   font-size: 2rem;
+}
+
+.calendar_container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  place-items: center;
+
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+
+.calendar_item {
+  background: transparent;
+  border: none;
+}
+
+.calendar_task {
+  position: relative;
+}
+
+.calendar_icon {
+  width: 2rem;
+
+  opacity: 0.5;
+}
+
+.calendar_todo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.calendar_date {
+  width: 10rem;
+  border-radius: 5rem;
+}
+
+.selected > .calendar_date {
+  background-color: #4058bf;
 }
