@@ -1,0 +1,38 @@
+* {
+  font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+
+  width: 100%;
+  height: 4rem;
+  background-color: #434344;
+}
+
+.logo_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.logo_wrapper > img {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  filter: invert(100%) sepia(0%) saturate(7483%) hue-rotate(352deg) brightness(136%) contrast(71%);
+}
+
+.logo_wrapper > h1 {
+  font-size: 1.4rem;
+  font-weight: 100;
+  color: white;
+}
+
+.btn_hamburger {
+  width: 1rem;
+  height: 1rem;
+}
