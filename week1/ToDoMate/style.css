@@ -97,6 +97,10 @@ header > h1 {
   height: 60vh;
 }
 
+.todo_category {
+  flex: 1;
+}
+
 .category_title {
   padding: 1rem;
 
