@@ -79,7 +79,7 @@ header > h1 {
   border-radius: 5rem;
 }
 
-.selected > .calendar_date {
+.selected_day > .calendar_date {
   background-color: #4058bf;
 }
 
@@ -137,4 +137,30 @@ header > h1 {
 
 .study > .category_title {
   color: #7ca0d7;
+}
+
+.selected_list > .todolist_icon {
+  filter: invert(48%) sepia(90%) saturate(4465%) hue-rotate(218deg) brightness(98%) contrast(91%);
+}
+
+.footer_wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer_btn {
+  width: 6rem;
+  padding-top: 1rem;
+  background: transparent;
+  border: none;
+}
+
+.footer_btn > img {
+  opacity: 0.5;
+}
+
+.footer_btn > p {
+  color: #767777;
+  font-size: 1rem;
 }
