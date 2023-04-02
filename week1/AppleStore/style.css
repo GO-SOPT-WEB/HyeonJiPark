@@ -6,10 +6,11 @@
 
 .header_wrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   position: fixed;
 
+  padding: 0rem 2rem;
   width: 100%;
   height: 3rem;
   background-color: #434344;
@@ -19,6 +20,7 @@
 
 .logo_wrapper {
   display: flex;
+  justify-content: space-around;
   align-items: center;
   gap: 0.4rem;
 }
@@ -45,6 +47,7 @@
 }
 
 .btn_hamburger {
+  padding: 1rem 4rem 1rem 1rem;
   width: 1rem;
   height: 1rem;
 }
