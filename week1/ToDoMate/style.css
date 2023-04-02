@@ -1,15 +1,9 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
 @font-face {
   font-family: 'PilseungGothic';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/PilseungGothic.woff2')
     format('woff2');
   font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
-    format('woff');
-  font-weight: 400;
   font-style: normal;
 }
 
@@ -40,11 +34,16 @@ header > h1 {
 .calendar_container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 1fr 1.5fr;
   place-items: center;
 
   font-weight: 800;
   font-size: 1.8rem;
+}
+
+.calendar_day {
+  color: #767777;
+  font-weight: 400;
 }
 
 .calendar_item {
@@ -54,6 +53,7 @@ header > h1 {
 
 .calendar_task {
   position: relative;
+  gap: 1rem;
 }
 
 .calendar_icon {
@@ -67,13 +67,57 @@ header > h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  font-weight: 700;
 }
 
 .calendar_date {
-  width: 10rem;
+  margin-top: 0.3rem;
+  padding: 0.3rem;
+
+  font-weight: 700;
   border-radius: 5rem;
 }
 
 .selected > .calendar_date {
   background-color: #4058bf;
+}
+
+.todolist {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 3rem;
+}
+
+.category_title {
+  padding: 1rem;
+
+  font-size: 1.2rem;
+  font-weight: 900;
+
+  background-color: #161616;
+  border-radius: 5rem;
+}
+
+.category_list {
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.category_item {
+  font-size: 1.4rem;
+  line-height: 1.8;
+}
+
+.today > .category_title {
+  color: #2b5fc2;
+}
+
+.todo > .category_title {
+  color: #3b76a3;
+}
+
+.study > .category_title {
+  color: #7ca0d7;
 }
