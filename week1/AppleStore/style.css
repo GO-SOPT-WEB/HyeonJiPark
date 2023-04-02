@@ -2,14 +2,14 @@
   font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
 }
 
-header {
+.header_wrapper {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: fixed;
+  position: sticky;
 
   width: 100%;
-  height: 4rem;
+  height: 3rem;
   background-color: #434344;
 }
 
@@ -35,4 +35,116 @@ header {
 .btn_hamburger {
   width: 1rem;
   height: 1rem;
+}
+
+.category_wrapper {
+  display: flex;
+  justify-content: center;
+
+  height: 6rem;
+}
+.category_list {
+  display: flex;
+  justify-content: space-around;
+  /* flex: 1; */
+
+  padding: 0rem;
+  width: 80%;
+
+  list-style: none;
+}
+
+.category_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category_item > img {
+  width: 1.5rem;
+}
+
+.category_item > p {
+  margin: 0;
+
+  font-weight: 400;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 0rem 3rem;
+}
+
+.product_card {
+  position: relative;
+  padding: 1rem;
+}
+
+.product_name > h2 {
+  margin: 0;
+
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.product_card:nth-child(2n) {
+  padding: 1rem;
+
+  background-color: black;
+}
+.product_card:nth-child(2n) > .product_name > h2 {
+  margin: 0;
+
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.product_card:nth-child(2n) > .bookmark > .ic_bookmark {
+  filter: invert(100%) sepia(70%) saturate(53%) hue-rotate(336deg) brightness(117%) contrast(100%);
+}
+
+.product_img {
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+.hashtag_list {
+  display: flex;
+  justify-content: center;
+  width: 150px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  gap: 0.3rem;
+
+  margin-bottom: 1rem;
+  padding: 0rem;
+
+  list-style: none;
+}
+
+.hashtag_item {
+  padding: 0.2rem 0.5rem;
+  background-color: #306fdb;
+
+  font-weight: 100;
+  font-size: 0.8rem;
+  color: white;
+  border-radius: 1rem;
+}
+
+.bookmark {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.ic_bookmark {
+  float: right;
+
+  width: 1.5rem;
 }
