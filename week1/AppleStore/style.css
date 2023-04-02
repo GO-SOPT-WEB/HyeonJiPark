@@ -2,6 +2,8 @@
   font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
 }
 
+/* ----------------- Header ----------------- */
+
 .header_wrapper {
   display: flex;
   justify-content: space-around;
@@ -36,6 +38,12 @@
   font-weight: 100;
 }
 
+/* ----------------- Hamburger ----------------- */
+
+.hamburger_menu:hover .hamburger_wrapper {
+  display: block;
+}
+
 .btn_hamburger {
   width: 1rem;
   height: 1rem;
@@ -52,10 +60,6 @@
   height: 100vh;
 
   background-color: white;
-}
-
-.hamburger_menu:hover .hamburger_wrapper {
-  display: block;
 }
 
 .hamburger_wrapper > h2 {
@@ -84,6 +88,8 @@
   cursor: pointer;
 }
 
+/* ----------------- Category ----------------- */
+
 .category_wrapper {
   display: flex;
   justify-content: center;
@@ -95,7 +101,6 @@
 .category_list {
   display: flex;
   justify-content: space-around;
-  /* flex: 1; */
 
   padding: 0rem;
   width: 80%;
@@ -119,6 +124,8 @@
 
   font-weight: 400;
 }
+
+/* ----------------- Product ----------------- */
 
 .product {
   display: grid;
@@ -151,24 +158,13 @@
 
   background-color: black;
 }
+
 .product_card:nth-child(2n) > .product_name > h2 {
   margin: 0;
 
   color: white;
   font-size: 1.4rem;
   font-weight: 600;
-}
-.product_card:nth-child(2n) > .bookmark > .ic_bookmark {
-  filter: invert(100%) sepia(70%) saturate(53%) hue-rotate(336deg) brightness(117%) contrast(100%);
-}
-.product_card:nth-child(2n) > .bookmark > .ic_bookmark:hover {
-  filter: invert(51%) sepia(76%) saturate(5146%) hue-rotate(206deg) brightness(90%) contrast(90%);
-  cursor: pointer;
-}
-
-.product_img {
-  padding-bottom: 2rem;
-  max-height: 60%;
 }
 
 .hashtag_wrapper {
@@ -178,20 +174,6 @@
   gap: 0.3rem;
 
   width: 14rem;
-}
-
-.hashtag_add {
-  padding: 0.2rem 0.5rem;
-
-  color: #306fdb;
-  background: white;
-  border: 0.05rem solid #306fdb;
-  border-radius: 1rem;
-}
-
-.hashtag_add:hover {
-  color: white;
-  background-color: #306fdb;
 }
 
 .hashtag_list {
@@ -218,6 +200,25 @@
   border-radius: 1rem;
 }
 
+.hashtag_add {
+  padding: 0.2rem 0.5rem;
+
+  color: #306fdb;
+  background: white;
+  border: 0.05rem solid #306fdb;
+  border-radius: 1rem;
+}
+
+.hashtag_add:hover {
+  color: white;
+  background-color: #306fdb;
+}
+
+.product_img {
+  padding-bottom: 2rem;
+  max-height: 60%;
+}
+
 .bookmark {
   position: absolute;
   bottom: 1rem;
@@ -231,6 +232,15 @@
 }
 
 .ic_bookmark:hover {
+  filter: invert(51%) sepia(76%) saturate(5146%) hue-rotate(206deg) brightness(90%) contrast(90%);
+  cursor: pointer;
+}
+
+.product_card:nth-child(2n) > .bookmark > .ic_bookmark {
+  filter: invert(100%) sepia(70%) saturate(53%) hue-rotate(336deg) brightness(117%) contrast(100%);
+}
+
+.product_card:nth-child(2n) > .bookmark > .ic_bookmark:hover {
   filter: invert(51%) sepia(76%) saturate(5146%) hue-rotate(206deg) brightness(90%) contrast(90%);
   cursor: pointer;
 }
