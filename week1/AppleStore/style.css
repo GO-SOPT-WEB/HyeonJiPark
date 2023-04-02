@@ -136,7 +136,6 @@
   position: relative;
 
   padding: 1rem;
-  /* overflow: hidden; */
 }
 
 .product_name > h2 {
@@ -177,6 +176,8 @@
   justify-content: center;
   align-items: center;
   gap: 0.3rem;
+
+  width: 14rem;
 }
 
 .hashtag_add {
@@ -197,7 +198,7 @@
   display: flex;
   justify-content: center;
 
-  overflow: hidden;
+  overflow-x: hidden;
   white-space: nowrap;
   gap: 0.3rem;
 
