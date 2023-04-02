@@ -88,6 +88,7 @@ header > h1 {
   flex-direction: column;
 
   margin-top: 3rem;
+  padding: 0rem 2rem;
 }
 
 .category_title {
@@ -101,13 +102,29 @@ header > h1 {
 }
 
 .category_list {
-  margin-top: 2rem;
-  margin-bottom: 2.5rem;
+  margin: 2rem 0rem 2.5rem 0rem;
+  padding: 0rem;
+
+  list-style: none;
 }
 
 .category_item {
+  display: flex;
+  gap: 0.5rem;
+
+  margin-bottom: 1rem;
+}
+
+.category_item > p {
   font-size: 1.4rem;
-  line-height: 1.8;
+  margin: 0rem;
+}
+
+.todolist_icon {
+  width: 1.8rem;
+  height: 1.8rem;
+
+  opacity: 0.5;
 }
 
 .today > .category_title {
