@@ -9,7 +9,6 @@
 
 * {
   box-sizing: border-box;
-
   font-family: 'Pretendard-Regular';
   font-size: 62.5%;
   color: white;
@@ -21,26 +20,21 @@ html {
   height: 100vh;
   margin: 0 auto;
   overflow-y: auto;
-
   background-color: black;
 }
 
 header > h1 {
   padding: 0rem 1rem;
-
   font-family: 'PilseungGothic';
   font-weight: 100;
   font-size: 2rem;
 }
-
-/* --------------------- Calendar 영역 --------------------- */
 
 .calendar_container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: 1fr 1.5fr;
   place-items: center;
-
   font-weight: 800;
   font-size: 1.8rem;
 }
@@ -62,7 +56,6 @@ header > h1 {
 
 .calendar_icon {
   width: 2rem;
-
   opacity: 0.5;
 }
 
@@ -71,14 +64,12 @@ header > h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   font-weight: 700;
 }
 
 .calendar_date {
   margin-top: 0.3rem;
   padding: 0.3rem;
-
   font-weight: 700;
   border-radius: 5rem;
 }
@@ -87,49 +78,47 @@ header > h1 {
   background-color: #4058bf;
 }
 
-/* --------------------- TodoList 영역 --------------------- */
-
 .todolist {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  overflow-y: scroll;
   gap: 2rem;
+  overflow-y: scroll;
   padding: 3rem 2rem;
   height: 70vh;
 }
 
 .todo_category {
-  flex: 1 1 45%;
+  flex-basis: 100%;
+}
+
+@media all and (min-width: 20rem) {
+  .todo_category {
+    flex-basis: calc(50% - 1rem);
+  }
 }
 
 .category_title {
   padding: 1rem;
-
   font-size: 1.2rem;
   font-weight: 900;
-
   background-color: #161616;
   border-radius: 5rem;
 }
 
 .category_list {
   margin-top: 2rem;
-  padding: 0rem;
-
+  padding-left: 0rem;
   list-style: none;
 }
 
 .category_item {
   display: flex;
   gap: 0.5rem;
-
   margin-bottom: 1rem;
 }
 
 .category_item > p {
   margin: 0rem;
-
   word-break: break-all;
   font-size: 1.4rem;
 }
@@ -137,7 +126,6 @@ header > h1 {
 .todolist_icon {
   width: 1.8rem;
   height: 1.8rem;
-
   opacity: 0.5;
 }
 
@@ -157,8 +145,6 @@ header > h1 {
   filter: invert(48%) sepia(90%) saturate(4465%) hue-rotate(218deg) brightness(98%) contrast(91%);
 }
 
-/* --------------------- footer 영역 --------------------- */
-
 .footer_wrapper {
   display: flex;
   justify-content: center;
@@ -166,7 +152,6 @@ header > h1 {
   bottom: 0;
   left: 50%;
   gap: 1rem;
-
   margin-bottom: 2rem;
   transform: translateX(-50%);
 }
@@ -177,7 +162,6 @@ header > h1 {
   background: transparent;
   border: none;
   border-radius: 1rem;
-
   box-shadow: 0.2rem 0.4rem 0rem 0rem #161616;
 }
 
@@ -196,23 +180,4 @@ header > h1 {
 .footer_btn > p {
   color: #767777;
   font-size: 1rem;
-}
-
-@media all and (max-width: 320px) {
-  .todolist {
-    flex-wrap: nowrap;
-    flex-direction: column;
-  }
-  .todo_category {
-    flex: 1 1 95%;
-  }
-}
-
-.scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.scroll {
-  -ms-overflow-style: none; /* 인터넷 익스플로러 */
-  scrollbar-width: none; /* 파이어폭스 */
 }
