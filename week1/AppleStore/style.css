@@ -17,13 +17,13 @@ body {
   justify-content: space-between;
   align-items: center;
   position: fixed;
+  z-index: 1;
 
-  padding: 0rem 3rem;
   width: 100%;
   height: 4.5rem;
-  background-color: #434344;
+  padding: 0rem 3rem;
 
-  z-index: 1;
+  background-color: #434344;
 }
 
 .logo_wrapper {
@@ -55,9 +55,9 @@ body {
 }
 
 .btn_hamburger {
-  padding: 1.5rem 6rem 1.5rem 1.5rem;
   width: 1.5rem;
   height: 1.5rem;
+  padding: 1.5rem 6rem 1.5rem 1.5rem;
 }
 
 .hamburger_wrapper {
@@ -112,11 +112,10 @@ body {
 .category_list {
   display: flex;
   justify-content: space-around;
-
-  padding: 0rem;
-  width: 80%;
-
   list-style: none;
+
+  width: 80%;
+  padding: 0rem;
 }
 
 .category_item {
@@ -181,37 +180,42 @@ body {
 .hashtag_wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 0.45rem;
 
   width: 21rem;
+  height: 3.75rem;
 }
 
 .hashtag_list {
   display: flex;
   justify-content: center;
-
-  overflow-x: hidden;
-  white-space: nowrap;
-  gap: 0.45rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  overflow: hidden;
 
   padding: 0rem;
-
-  list-style: none;
 }
 
 .hashtag_item {
-  padding: 0.3rem 0.75rem;
-  background-color: #306fdb;
+  display: inline-block;
 
+  padding: 0.3rem 0.75rem;
+
+  border-radius: 1.5rem;
+  background-color: #306fdb;
   color: white;
   font-weight: 100;
   font-size: 1.2rem;
-  border-radius: 1.5rem;
+
+  white-space: nowrap;
+  text-overflow: clip;
 }
 
 .hashtag_add {
-  padding: 0.3rem 0.75rem;
+  margin: 0.65rem 0rem;
+  width: 2rem;
+  height: 2rem;
 
   color: #306fdb;
   background: white;
@@ -256,25 +260,25 @@ body {
   cursor: pointer;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 75rem) {
   .product {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 62rem) {
   .product {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 48rem) {
   .product {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 36rem) {
   .product {
     grid-template-columns: repeat(1, 1fr);
   }
