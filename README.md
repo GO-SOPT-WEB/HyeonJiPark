@@ -6,12 +6,14 @@
 
 # 💙 해피 웹파트 엘쨔 💙
 
-### 💻 과제 (✨: 심화)
+### 💻 과제
 
-| Week  | 과제 | ☑️  | 링크                                                               |
-| ----- | ---- | --- | ------------------------------------------------------------------ |
-| 1주차 |      |     | [링크](https://github.com/IN-SOPT-WEB/HyeonJiPARK/pull/1 '🔗링크') |
-| 2주차 |      |     |                                                                    |
-| 3주차 |      |     |                                                                    |
+(✨: 심화 과제 / 📝 : 생각 과제)
+
+| Week  | 과제           | ☑️  | 링크                                                               |
+| ----- | -------------- | --- | ------------------------------------------------------------------ |
+| 1주차 | ☁︎ todo mate   | ✨  | [링크](https://github.com/GO-SOPT-WEB/HyeonJiPark/pull/3 '🔗링크') |
+| 1주차 | 🖥️ Apple Store | ✨  | [링크](https://github.com/GO-SOPT-WEB/HyeonJiPark/pull/2 '🔗링크') |
+| 1주차 | 🕸️ 웹 최적화   | 📝  | [링크](https://github.com/GO-SOPT-WEB/HyeonJiPark/pull/1 '🔗링크') |
 
 </div>
