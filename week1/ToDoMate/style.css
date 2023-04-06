@@ -80,18 +80,19 @@ header > h1 {
 
 .todolist {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 2rem;
   overflow-y: scroll;
-  padding: 3rem 2rem;
+
   height: 70vh;
+  padding: 3rem 2rem;
 }
 
-.todo_category {
-  flex-basis: 100%;
-}
-
-@media all and (min-width: 20rem) {
+@media all and (min-width: 25rem) {
+  .todolist {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
   .todo_category {
     flex-basis: calc(50% - 1rem);
   }
@@ -139,6 +140,10 @@ header > h1 {
 
 .study > .category_title {
   color: #7ca0d7;
+}
+
+.sopt > .category_title {
+  color: #59acb9;
 }
 
 .selected_list > .todolist_icon {
