@@ -135,6 +135,14 @@ body {
   font-weight: 400;
 }
 
+.category_item:hover,
+.category_item > img:hover {
+  filter: invert(51%) sepia(76%) saturate(5146%) hue-rotate(206deg) brightness(90%) contrast(90%);
+  color: #306fdb;
+
+  cursor: pointer;
+}
+
 /* ----------------- Product ----------------- */
 
 .product {
