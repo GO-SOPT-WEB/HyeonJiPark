@@ -65,12 +65,12 @@ header > h1 {
   position: relative;
 }
 
-.calendar_icon {
+.calendar_todo_wrapper > img {
   width: 2rem;
   opacity: 0.5;
 }
 
-.calendar_todo {
+.calendar_todo_wrapper > p {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -112,8 +112,11 @@ header > h1 {
   }
 }
 
-.category_title {
+.todo_category > h3 {
+  margin: 0;
   padding: 1rem;
+  width: fit-content;
+
   font-size: 1.2rem;
   font-weight: 900;
   background-color: var(--bg-color-darkgray);
@@ -144,19 +147,19 @@ header > h1 {
   opacity: 0.5;
 }
 
-.today > .category_title {
+.today > h3 {
   color: var(--point-color-blue-2);
 }
 
-.todo > .category_title {
+.todo > h3 {
   color: var(--point-color-blue-3);
 }
 
-.study > .category_title {
+.study > h3 {
   color: var(--point-color-blue-4);
 }
 
-.sopt > .category_title {
+.sopt > h3 {
   color: var(--point-color-blue-5);
 }
 
