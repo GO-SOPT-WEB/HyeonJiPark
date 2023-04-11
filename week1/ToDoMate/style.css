@@ -153,12 +153,10 @@ header > h1 {
 .footer_wrapper {
   display: flex;
   justify-content: center;
-  position: fixed;
+  position: sticky;
   bottom: 0;
-  left: 50%;
   gap: 1rem;
   margin-bottom: 2rem;
-  transform: translateX(-50%);
 }
 
 .footer_btn {
