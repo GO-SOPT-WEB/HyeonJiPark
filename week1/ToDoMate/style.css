@@ -123,7 +123,7 @@ header > h1 {
   border-radius: 5rem;
 }
 
-.category_list {
+.todo_category > ul {
   margin-top: 2rem;
   padding-left: 0rem;
   list-style: none;
@@ -141,7 +141,7 @@ header > h1 {
   font-size: 1.4rem;
 }
 
-.todolist_icon {
+.category_item > img {
   width: 1.8rem;
   height: 1.8rem;
   opacity: 0.5;
@@ -163,7 +163,7 @@ header > h1 {
   color: var(--point-color-blue-5);
 }
 
-.selected_list > .todolist_icon {
+.selected_list > img {
   filter: invert(48%) sepia(90%) saturate(4465%) hue-rotate(218deg) brightness(98%) contrast(91%);
 }
 
@@ -187,11 +187,8 @@ header > h1 {
   cursor: pointer;
 }
 
-.btn_calendar:active {
-  background-color: var(--bg-color-darkgray);
-}
-
-.btn_my:active {
+.footer_btn:hover,
+.footer_btn:active {
   background-color: var(--bg-color-darkgray);
 }
 
