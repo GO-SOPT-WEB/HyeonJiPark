@@ -7,11 +7,23 @@
   font-style: normal;
 }
 
+:root {
+  --text-color-white: #ffffff;
+  --text-color-gray: #767777;
+  --bg-color-black: #000000;
+  --bg-color-darkgray: #161616;
+  --point-color-blue-1: #4058bf;
+  --point-color-blue-2: #2b5fc2;
+  --point-color-blue-3: #3b76a3;
+  --point-color-blue-4: #7ca0d7;
+  --point-color-blue-5: #59acb9;
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Pretendard-Regular';
   font-size: 62.5%;
-  color: white;
+  color: var(--text-color-white);
 }
 
 body,
@@ -20,7 +32,7 @@ html {
   height: 100vh;
   margin: 0 auto;
   overflow-y: auto;
-  background-color: black;
+  background-color: var(--bg-color-black);
 }
 
 header > h1 {
@@ -40,7 +52,7 @@ header > h1 {
 }
 
 .calendar_day {
-  color: #767777;
+  color: var(--text-color-gray);
   font-weight: 400;
 }
 
@@ -77,7 +89,7 @@ header > h1 {
 }
 
 .selected_day > .calendar_date {
-  background-color: #4058bf;
+  background-color: var(--point-color-blue-1);
 }
 
 .todolist {
@@ -104,7 +116,7 @@ header > h1 {
   padding: 1rem;
   font-size: 1.2rem;
   font-weight: 900;
-  background-color: #161616;
+  background-color: var(--bg-color-darkgray);
   border-radius: 5rem;
 }
 
@@ -133,19 +145,19 @@ header > h1 {
 }
 
 .today > .category_title {
-  color: #2b5fc2;
+  color: var(--point-color-blue-2);
 }
 
 .todo > .category_title {
-  color: #3b76a3;
+  color: var(--point-color-blue-3);
 }
 
 .study > .category_title {
-  color: #7ca0d7;
+  color: var(--point-color-blue-4);
 }
 
 .sopt > .category_title {
-  color: #59acb9;
+  color: var(--point-color-blue-5);
 }
 
 .selected_list > .todolist_icon {
@@ -167,17 +179,17 @@ header > h1 {
   background: transparent;
   border: none;
   border-radius: 1rem;
-  box-shadow: 0.2rem 0.4rem 0rem 0rem #161616;
+  box-shadow: 0.2rem 0.4rem 0rem 0rem var(--bg-color-darkgray);
 
   cursor: pointer;
 }
 
 .btn_calendar:active {
-  background-color: #161616;
+  background-color: var(--bg-color-darkgray);
 }
 
 .btn_my:active {
-  background-color: #161616;
+  background-color: var(--bg-color-darkgray);
 }
 
 .footer_btn > img {
@@ -185,6 +197,6 @@ header > h1 {
 }
 
 .footer_btn > p {
-  color: #767777;
+  color: var(--text-color-gray);
   font-size: 1rem;
 }
