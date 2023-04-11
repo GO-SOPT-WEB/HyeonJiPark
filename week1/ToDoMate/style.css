@@ -44,14 +44,13 @@ header > h1 {
   font-weight: 400;
 }
 
-.calendar_item {
-  background: transparent;
-  border: none;
+.calendar_task {
+  display: grid;
+  place-items: center;
 }
 
-.calendar_task {
+.calendar_todo_wrapper {
   position: relative;
-  gap: 1rem;
 }
 
 .calendar_icon {
