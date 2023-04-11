@@ -61,7 +61,7 @@ body {
   display: block;
 }
 
-.btn_hamburger {
+.hamburger_menu > img {
   width: 1.5rem;
   height: 1.5rem;
   padding: 1.5rem 6rem 1.5rem 1.5rem;
@@ -87,21 +87,21 @@ body {
   font-weight: 500;
 }
 
-.hamburger_list {
+.hamburger_wrapper > ul {
   margin-top: 2rem;
   padding: 0rem;
 
   list-style: none;
 }
 
-.hamburger_item {
+.hamburger_wrapper > ul > li {
   margin-bottom: 1.5rem;
 
   font-size: 1.6rem;
   font-weight: 200;
 }
 
-.hamburger_item:hover {
+.hamburger_wrapper > ul > li:hover {
   color: var(--point-color-blue);
 
   cursor: pointer;
@@ -117,7 +117,7 @@ body {
   padding-top: 4.5rem;
 }
 
-.category_list {
+.category_wrapper > ul {
   display: flex;
   justify-content: space-around;
   list-style: none;
@@ -171,7 +171,7 @@ body {
   padding: 1rem;
 }
 
-.product_name > h2 {
+.product_card > header > h2 {
   margin: 0;
 
   font-size: 1.6rem;
@@ -185,7 +185,7 @@ body {
   background-color: var(--bg-color-black);
 }
 
-.product_card:nth-child(2n) > .product_name > h2 {
+.product_card:nth-child(2n) > header > h2 {
   margin: 0;
 
   color: var(--bg-color-white);
@@ -202,7 +202,7 @@ body {
   height: 3.75rem;
 }
 
-.hashtag_list {
+.hashtag_wrapper > ul {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -227,7 +227,7 @@ body {
   text-overflow: clip;
 }
 
-.hashtag_add {
+.hashtag_wrapper > button {
   margin: 0.65rem 0rem;
   width: 2rem;
   height: 2rem;
@@ -238,18 +238,18 @@ body {
   border-radius: 1.5rem;
 }
 
-.hashtag_add:hover {
+.hashtag_wrapper > button:hover {
   color: var(--bg-color-white);
   background-color: var(--point-color-blue);
 }
 
-.product_img {
+.product_card > img {
   padding-bottom: 3rem;
   max-width: 21rem;
   max-height: 60%;
 }
 
-.bookmark {
+.product_card > footer {
   position: absolute;
   bottom: 1.5rem;
   right: 1.5rem;
@@ -266,11 +266,11 @@ body {
   cursor: pointer;
 }
 
-.product_card:nth-child(2n) > .bookmark > .ic_bookmark {
+.product_card:nth-child(2n) > footer > .ic_bookmark {
   filter: invert(100%) sepia(70%) saturate(53%) hue-rotate(336deg) brightness(117%) contrast(100%);
 }
 
-.product_card:nth-child(2n) > .bookmark > .ic_bookmark:hover {
+.product_card:nth-child(2n) > footer > .ic_bookmark:hover {
   filter: invert(51%) sepia(76%) saturate(5146%) hue-rotate(206deg) brightness(90%) contrast(90%);
   cursor: pointer;
 }
