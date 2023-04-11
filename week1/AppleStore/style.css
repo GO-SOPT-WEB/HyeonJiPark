@@ -1,3 +1,10 @@
+:root {
+  --bg-color-black: #000000;
+  --bg-color-white: #ffffff;
+  --bg-color-gray: #434344;
+  --point-color-blue: #306fdb;
+}
+
 * {
   font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
 }
@@ -23,7 +30,7 @@ body {
   height: 4.5rem;
   padding: 0rem 3rem;
 
-  background-color: #434344;
+  background-color: var(--bg-color-gray);
 }
 
 .logo_wrapper {
@@ -43,7 +50,7 @@ body {
 .logo_wrapper > h1 {
   margin: 0;
 
-  color: white;
+  color: var(--bg-color-white);
   font-size: 1.6rem;
   font-weight: 100;
 }
@@ -70,7 +77,7 @@ body {
   width: 22.55rem;
   height: 100vh;
 
-  background-color: white;
+  color: var(--bg-color-white);
 }
 
 .hamburger_wrapper > h2 {
@@ -94,7 +101,7 @@ body {
 }
 
 .hamburger_item:hover {
-  color: #306fdb;
+  color: var(--point-color-blue);
 
   cursor: pointer;
 }
@@ -138,7 +145,7 @@ body {
 .category_item:hover,
 .category_item > img:hover {
   filter: invert(51%) sepia(76%) saturate(5146%) hue-rotate(206deg) brightness(90%) contrast(90%);
-  color: #306fdb;
+  color: var(--point-color-blue);
 
   cursor: pointer;
 }
@@ -174,13 +181,13 @@ body {
 .product_card:nth-child(2n) {
   padding: 1.5rem;
 
-  background-color: black;
+  background-color: var(--bg-color-black);
 }
 
 .product_card:nth-child(2n) > .product_name > h2 {
   margin: 0;
 
-  color: white;
+  color: var(--bg-color-white);
   font-size: 1.6rem;
   font-weight: 600;
 }
@@ -211,8 +218,8 @@ body {
   padding: 0.3rem 0.75rem;
 
   border-radius: 1.5rem;
-  background-color: #306fdb;
-  color: white;
+  background-color: var(--point-color-blue);
+  color: var(--bg-color-white);
   font-weight: 100;
   font-size: 1.2rem;
 
@@ -225,15 +232,15 @@ body {
   width: 2rem;
   height: 2rem;
 
-  color: #306fdb;
-  background: white;
-  border: 0.075rem solid #306fdb;
+  color: var(--point-color-blue);
+  background-color: var(--bg-color-white);
+  border: 0.075rem solid var(--point-color-blue);
   border-radius: 1.5rem;
 }
 
 .hashtag_add:hover {
-  color: white;
-  background-color: #306fdb;
+  color: var(--bg-color-white);
+  background-color: var(--point-color-blue);
 }
 
 .product_img {
