@@ -166,6 +166,8 @@ header > h1 {
   border: none;
   border-radius: 1rem;
   box-shadow: 0.2rem 0.4rem 0rem 0rem #161616;
+
+  cursor: pointer;
 }
 
 .btn_calendar:active {
