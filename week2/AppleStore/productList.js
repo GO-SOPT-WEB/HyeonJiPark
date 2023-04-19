@@ -1,4 +1,4 @@
-const produtiList = [
+export const productList = [
   {
     productName: 'MacBook Air M1',
     url: './images/img_macbook_air_m1.png',
