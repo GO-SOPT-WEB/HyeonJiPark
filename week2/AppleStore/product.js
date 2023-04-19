@@ -1,4 +1,4 @@
-import { productList } from './productList.js';
+import { productList } from './data/productList.js';
 
 const $$ = (selector) => document.querySelectorAll(selector);
 const $ = (selector) => document.querySelector(selector);
