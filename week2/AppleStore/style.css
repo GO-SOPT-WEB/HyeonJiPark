@@ -265,7 +265,7 @@ body {
   text-overflow: clip;
 }
 
-.hashtag_wrapper > button {
+.hashtag_more {
   margin: 0.65rem 0rem;
   width: 2rem;
   height: 2rem;
@@ -276,7 +276,7 @@ body {
   border-radius: 1.5rem;
 }
 
-.hashtag_wrapper > button:hover {
+.hashtag_more:hover {
   color: var(--bg-color-white);
   background-color: var(--point-color-blue);
 }

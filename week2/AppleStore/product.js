@@ -22,7 +22,7 @@ function loadProduct() {
           <ul>
             ${hashtagItems}
           </ul>
-          <button type="button">+</button>
+          <button type="button" class="hashtag_more">+</button>
         </section>
         <img src="${url}" alt="${alt}" />
         <footer>
