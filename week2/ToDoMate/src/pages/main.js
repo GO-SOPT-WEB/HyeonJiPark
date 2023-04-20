@@ -1,10 +1,12 @@
 import { navigate } from '../utils/navigate';
 import { $ } from '../utils/querySelector';
-import { IcCalendar, IcMy, IcTodo } from '../assets/icons';
+import { IcTodo, IcTodoChecked } from '../assets/icons';
 import { todoList } from '../constants/todoList';
 import '../../style.css';
 
 function Main($container) {
+  let uncheckedCount = todoList.length;
+
   this.$container = $container;
 
   this.setState = () => {
@@ -29,7 +31,7 @@ function Main($container) {
             <article class="calendar_task selected_day">
                 <div class="calendar_todo_wrapper">
                     <img src="${IcTodo}" alt="투두리스트-아이콘" />
-                    <p>6</p>
+                    <p class="unchecked-count">${uncheckedCount}</p>
                 </div>
                 <time class="calendar_date" datetime="2023-03-27">27</time>
             </article>
@@ -106,48 +108,58 @@ function Main($container) {
     </main>
     `;
 
-    const ulToday = $('.todo_category.today ul');
-    const ulTodo = $('.todo_category.todo ul');
-    const ulStudy = $('.todo_category.study ul');
-    const ulSopt = $('.todo_category.sopt ul');
-    const ulEtc = $('.todo_category.etc ul');
+    const today = $('.todo_category.today ul');
+    const todo = $('.todo_category.todo ul');
+    const study = $('.todo_category.study ul');
+    const sopt = $('.todo_category.sopt ul');
+    const etc = $('.todo_category.etc ul');
+
+    const uncheckedCountDisplay = $('.unchecked-count');
 
     todoList.forEach((item) => {
       const li = document.createElement('li');
       const label = document.createElement('label');
-      //   const input = document.createElement('input');
       const img = document.createElement('img');
       img.setAttribute('src', IcTodo);
-      img.setAttribute('alt', 'todo-checkbox');
+      img.setAttribute('alt', 'todo-unchecked');
 
-      //   input.setAttribute('type', 'checkbox');
-      img.classList.add();
+      // 완료한 투두 체크 및 카운트
+      img.addEventListener('click', function () {
+        if (img.getAttribute('alt') === 'todo-unchecked') {
+          img.setAttribute('src', IcTodoChecked);
+          img.setAttribute('alt', 'todo-checked');
+          img.classList.add('checked');
+          uncheckedCount--;
+          uncheckedCountDisplay.textContent = uncheckedCount;
+        } else {
+          img.setAttribute('src', IcTodo);
+          img.setAttribute('alt', 'todo-unchecked');
+          img.classList.remove('checked');
+          uncheckedCount++;
+          uncheckedCountDisplay.textContent = uncheckedCount;
+        }
+      });
       label.appendChild(img);
-
-      li.classList.add('category_item');
       label.appendChild(document.createTextNode(item.todo));
       li.classList.add('category_item');
       li.appendChild(label);
 
-      //   input.setAttribute('type', 'checkbox');
-      //   input.appendChild(document.createTextNode(item.todo));
-      // input.textContent = item.todo;
-
+      // 카테고리별 투두리스트 보여주기
       switch (item.category) {
         case 'TODAY':
-          ulToday.appendChild(li);
+          today.appendChild(li);
           break;
         case 'TODO':
-          ulTodo.appendChild(li);
+          todo.appendChild(li);
           break;
         case 'STUDY':
-          ulStudy.appendChild(li);
+          study.appendChild(li);
           break;
         case 'SOPT':
-          ulSopt.appendChild(li);
+          sopt.appendChild(li);
           break;
         case 'ETC':
-          ulEtc.appendChild(li);
+          etc.appendChild(li);
           break;
         default:
           break;

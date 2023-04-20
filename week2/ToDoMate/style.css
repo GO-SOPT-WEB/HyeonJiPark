@@ -148,6 +148,10 @@ header > h1 {
   opacity: 0.5;
 }
 
+.category_item:checked > label > img {
+  filter: invert(48%) sepia(90%) saturate(4465%) hue-rotate(218deg) brightness(98%) contrast(91%);
+}
+
 .today > h3 {
   color: var(--point-color-blue-2);
 }
