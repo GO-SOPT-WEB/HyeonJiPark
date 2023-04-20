@@ -130,18 +130,19 @@ header > h1 {
 }
 
 .category_item {
-  display: flex;
-  gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
-.category_item > p {
+.category_item > label {
+  display: flex;
+  gap: 0.5rem;
+
   margin: 0rem;
   word-break: break-all;
   font-size: 1.4rem;
 }
 
-.category_item > img {
+.category_item > label > img {
   width: 1.8rem;
   height: 1.8rem;
   opacity: 0.5;

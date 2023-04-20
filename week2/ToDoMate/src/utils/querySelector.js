@@ -4,3 +4,10 @@ export const $ = (selector) => {
 
   return result;
 };
+
+export const $$ = (selector) => {
+  const result = document.querySelectorAll(selector);
+  if (!(result instanceof HTMLElement)) return null;
+
+  return result;
+};

@@ -1,6 +1,8 @@
 import { navigate } from '../utils/navigate';
 import { $ } from '../utils/querySelector';
 import { IcCalendar, IcMy, IcTodo } from '../assets/icons';
+import { todoList } from '../constants/todoList';
+import '../../style.css';
 
 function Main($container) {
   this.$container = $container;
@@ -103,6 +105,54 @@ function Main($container) {
         </section>
     </main>
     `;
+
+    const ulToday = $('.todo_category.today ul');
+    const ulTodo = $('.todo_category.todo ul');
+    const ulStudy = $('.todo_category.study ul');
+    const ulSopt = $('.todo_category.sopt ul');
+    const ulEtc = $('.todo_category.etc ul');
+
+    todoList.forEach((item) => {
+      const li = document.createElement('li');
+      const label = document.createElement('label');
+      //   const input = document.createElement('input');
+      const img = document.createElement('img');
+      img.setAttribute('src', IcTodo);
+      img.setAttribute('alt', 'todo-checkbox');
+
+      //   input.setAttribute('type', 'checkbox');
+      img.classList.add();
+      label.appendChild(img);
+
+      li.classList.add('category_item');
+      label.appendChild(document.createTextNode(item.todo));
+      li.classList.add('category_item');
+      li.appendChild(label);
+
+      //   input.setAttribute('type', 'checkbox');
+      //   input.appendChild(document.createTextNode(item.todo));
+      // input.textContent = item.todo;
+
+      switch (item.category) {
+        case 'TODAY':
+          ulToday.appendChild(li);
+          break;
+        case 'TODO':
+          ulTodo.appendChild(li);
+          break;
+        case 'STUDY':
+          ulStudy.appendChild(li);
+          break;
+        case 'SOPT':
+          ulSopt.appendChild(li);
+          break;
+        case 'ETC':
+          ulEtc.appendChild(li);
+          break;
+        default:
+          break;
+      }
+    });
   };
 
   this.render();
