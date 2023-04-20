@@ -24,7 +24,10 @@ function loadProduct() {
           </ul>
           <button type="button" class="hashtag_btn">+</button>
           <div class="hashtag_more">
-          ${hashtagItems}
+            <div class="hashtag_list">
+              ${hashtagItems}
+            </div>
+            <button type="button" class="hashtag_close_btn">X</button>
           </div>
         </section>
         <img src="${url}" alt="${alt}" />
