@@ -6,10 +6,9 @@ const $ = (selector) => document.querySelector(selector);
 // product 섹션
 const productSection = $('.product');
 
+// product 불러오기
 function loadProduct() {
-  // product 추가
   productList.forEach(({ category, productName, hashtagList, url, alt }) => {
-    // hashtagList 목록 li 요소로 변환
     const hashtagItems = hashtagList
       .map((hashtag) => `<li class="hashtag_item">${hashtag}</li>`)
       .join('');
@@ -36,25 +35,69 @@ function loadProduct() {
   });
 }
 
-const categories = $$('.category_item');
-
-categories.forEach((categoryItem) => {
-  categoryItem.addEventListener('click', () => {
-    const categoryId = categoryItem.dataset.category;
-    filterProducts(categoryId);
-  });
-});
-
-function filterProducts(categoryId) {
+// 선택한 카테고리에 따라 필터링
+function filterProducts() {
   $$('.product_card').forEach((productCard) => {
-    if (categoryId === 'All' || productCard.dataset.category === categoryId) {
-      productCard.style.display = 'flex';
-    } else {
-      productCard.style.display = 'none';
-    }
+    const category = productCard.dataset.category;
+
+    productCard.style.display =
+      selectedFilterList.length === 0 ||
+      selectedFilterList.includes('All') ||
+      selectedFilterList.includes(category)
+        ? 'flex'
+        : 'none';
+  });
+}
+
+// 선택한 카테고리 필터 표시
+const selectedFilters = $('.filter_list');
+
+function showCategory(category) {
+  const selectedCategory = `
+  <li class="filter_item">${category}
+    <button type="button" class="remove_filter_btn">X</button>
+  </li>
+  `;
+  selectedFilters.insertAdjacentHTML('beforeend', selectedCategory);
+
+  // 선택한 카테고리 삭제
+  const removeButtons = $$('.remove_filter_btn');
+  removeButtons.forEach((removeButton) => {
+    removeButton.addEventListener('click', (e) => {
+      const selectedFilter = e.target.parentNode;
+
+      const targetFilter = selectedFilter.innerText.slice(0, -1).trim('');
+      const newSelectedFilterList = selectedFilterList.filter((item) => item !== targetFilter);
+      selectedFilterList = newSelectedFilterList;
+
+      selectedFilter.remove();
+
+      filterProducts();
+      showProducts();
+    });
+  });
+}
+
+// 필터링한 상품 보여주기
+const categories = $$('.category_item');
+let selectedFilterList = [];
+
+function showProducts() {
+  categories.forEach((categoryItem) => {
+    categoryItem.addEventListener('click', () => {
+      const category = categoryItem.dataset.category;
+
+      if (!selectedFilterList.includes(category)) {
+        selectedFilterList.push(category);
+
+        showCategory(category);
+        filterProducts();
+      }
+    });
   });
 }
 
 window.onload = () => {
   loadProduct();
+  showProducts();
 };

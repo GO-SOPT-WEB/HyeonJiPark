@@ -2,6 +2,7 @@
   --bg-color-black: #000000;
   --bg-color-white: #ffffff;
   --bg-color-gray: #434344;
+  --bg-color-lightgray: #e2e6ea;
   --point-color-blue: #306fdb;
 }
 
@@ -113,7 +114,7 @@ body {
   display: flex;
   justify-content: center;
 
-  height: 9rem;
+  /* height: 9rem; */
   padding-top: 4.5rem;
 }
 
@@ -151,6 +152,43 @@ body {
   cursor: pointer;
 }
 
+/* ----------------- Filter ----------------- */
+
+.filter_wrapper {
+  display: flex;
+  justify-content: center;
+
+  padding-top: 0.5rem;
+}
+
+.filter_list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 1rem;
+
+  width: 80%;
+  padding: 0rem;
+}
+
+.filter_item {
+  display: flex;
+  align-items: center;
+
+  padding: 0.5rem 1rem;
+
+  color: var(--bg-color-gray);
+  background-color: var(--bg-color-lightgray);
+  font-size: 1.4rem;
+  border-radius: 1.5rem;
+}
+
+.remove_filter_btn {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+}
+
 /* ----------------- Product ----------------- */
 
 .product {
@@ -159,7 +197,7 @@ body {
   grid-auto-rows: 27rem;
   gap: 1.5rem;
 
-  padding: 0rem 4.5rem;
+  padding: 2.5rem 4.5rem;
 }
 
 .product_card {
