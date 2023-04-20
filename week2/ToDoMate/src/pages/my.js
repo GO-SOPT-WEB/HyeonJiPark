@@ -1,3 +1,4 @@
+import { IcMy } from '../assets/icons';
 function My($container) {
   this.$container = $container;
 
@@ -9,6 +10,7 @@ function My($container) {
     this.$container.innerHTML = `
           <main class="myPage">
             마이페이지
+            <img src="${IcMy}" alt="MyPage-아이콘" />
           </main>
         `;
   };

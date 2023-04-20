@@ -1,3 +1,6 @@
+import App from './src/app';
+import './style.css';
+
 window.addEventListener('DOMContentLoaded', (e) => {
-  new App($('#app'));
+  new App(document.querySelector('#app'));
 });
