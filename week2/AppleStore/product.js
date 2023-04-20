@@ -36,7 +36,7 @@ function loadProduct() {
 }
 
 // 선택한 카테고리에 따라 필터링
-function filterProducts() {
+function filterProduct() {
   $$('.product_card').forEach((productCard) => {
     const category = productCard.dataset.category;
 
@@ -72,8 +72,8 @@ function showCategory(category) {
 
       selectedFilter.remove();
 
-      filterProducts();
-      showProducts();
+      filterProduct();
+      showProduct();
     });
   });
 }
@@ -82,7 +82,7 @@ function showCategory(category) {
 const categories = $$('.category_item');
 let selectedFilterList = [];
 
-function showProducts() {
+function showProduct() {
   categories.forEach((categoryItem) => {
     categoryItem.addEventListener('click', () => {
       const category = categoryItem.dataset.category;
@@ -91,7 +91,7 @@ function showProducts() {
         selectedFilterList.push(category);
 
         showCategory(category);
-        filterProducts();
+        filterProduct();
       }
     });
   });
@@ -99,5 +99,5 @@ function showProducts() {
 
 window.onload = () => {
   loadProduct();
-  showProducts();
+  showProduct();
 };
