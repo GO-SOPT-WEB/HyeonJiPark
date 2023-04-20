@@ -167,36 +167,45 @@ header > h1 {
   filter: invert(48%) sepia(90%) saturate(4465%) hue-rotate(218deg) brightness(98%) contrast(91%);
 }
 
-.footer_wrapper {
+.nav_wrapper {
   display: flex;
-  justify-content: center;
-  position: sticky;
+  position: absolute;
+  left: 50%;
   bottom: 0;
+  transform: translateX(-50%);
+
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
-.footer_btn {
+.nav_btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   width: 6rem;
   padding-top: 1rem;
+
   background: transparent;
   border: none;
   border-radius: 1rem;
   box-shadow: 0.2rem 0.4rem 0rem 0rem var(--bg-color-darkgray);
+  text-decoration: none;
 
   cursor: pointer;
 }
 
-.footer_btn:hover,
-.footer_btn:active {
+.nav_btn:hover,
+.nav_btn:active {
   background-color: var(--bg-color-darkgray);
 }
 
-.footer_btn > img {
+.nav_btn > img {
   opacity: 0.5;
 }
 
-.footer_btn > p {
+.nav_btn > p {
   color: var(--text-color-gray);
   font-size: 1rem;
 }

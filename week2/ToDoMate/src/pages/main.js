@@ -102,16 +102,6 @@ function Main($container) {
             </article>
         </section>
     </main>
-    <footer class="footer_wrapper">
-        <button class="footer_btn" type="button">
-            <img src="${IcCalendar}" alt="달력-아이콘" />
-            <p>달력</p>
-        </button>
-        <button class="footer_btn" type="button">
-            <img src="${IcMy}" alt="My-아이콘" />
-            <p>My</p>
-        </button>
-    </footer>
     `;
   };
 
