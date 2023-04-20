@@ -103,13 +103,22 @@ function showProduct() {
   });
 }
 
-// 해시태그 더보기
-const showMoreHashtag = $$('.hashtag_more');
-showMoreHashtag.forEach((moreHashtag) => {
-  moreHashtag.addEventListener('click', (e) => {});
-});
+// 해시태그 더보기 모달
+function showMoreHashtag() {
+  productSection.addEventListener('click', (e) => {
+    if (e.target.classList.contains('hashtag_btn')) {
+      const hashtagMore = e.target.nextElementSibling;
+      hashtagMore.style.display = 'flex';
+    }
+    if (e.target.classList.contains('hashtag_close_btn')) {
+      const hashtagClose = e.target.parentNode;
+      hashtagClose.style.display = 'none';
+    }
+  });
+}
 
 window.onload = () => {
   loadProduct();
   showProduct();
+  showMoreHashtag();
 };

@@ -282,7 +282,7 @@ body {
 }
 
 .hashtag_more {
-  display: flex;
+  display: none;
   justify-content: center;
   position: absolute;
   top: 6rem;
