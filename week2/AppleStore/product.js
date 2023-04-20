@@ -22,7 +22,10 @@ function loadProduct() {
           <ul>
             ${hashtagItems}
           </ul>
-          <button type="button" class="hashtag_more">+</button>
+          <button type="button" class="hashtag_btn">+</button>
+          <div class="hashtag_more">
+          ${hashtagItems}
+          </div>
         </section>
         <img src="${url}" alt="${alt}" />
         <footer>
@@ -96,6 +99,12 @@ function showProduct() {
     });
   });
 }
+
+// 해시태그 더보기
+const showMoreHashtag = $$('.hashtag_more');
+showMoreHashtag.forEach((moreHashtag) => {
+  moreHashtag.addEventListener('click', (e) => {});
+});
 
 window.onload = () => {
   loadProduct();
