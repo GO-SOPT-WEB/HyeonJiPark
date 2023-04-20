@@ -80,27 +80,27 @@ function Main($container) {
         </section>
         <section class="todolist">
             <article class="todo_category today">
-                <h3>TODAY</h3>
+                <h3>TODAY<button type="button" class="addTodo_btn">+</button></h3>
                 <ul>
                 </ul>
             </article>
             <article class="todo_category todo">
-                <h3>TODO</h3>
+                <h3>TODO<button type="button" class="addTodo_btn">+</button></h3>
                 <ul>
                 </ul>
             </article>
             <article class="todo_category study">
-                <h3>STUDY</h3>
+                <h3>STUDY<button type="button" class="addTodo_btn">+</button></h3>
                 <ul>
                 </ul>
             </article>
             <article class="todo_category sopt">
-                <h3>SOPT</h3>
+                <h3>SOPT<button type="button" class="addTodo_btn">+</button></h3>
                 <ul>
                 </ul>
             </article>
             <article class="todo_category etc">
-                <h3>ETC</h3>
+                <h3>ETC<button type="button" class="addTodo_btn">+</button></h3>
                 <ul>
                 </ul>
             </article>
