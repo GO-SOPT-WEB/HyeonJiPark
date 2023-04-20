@@ -3,7 +3,6 @@ import { productList } from './data/productList.js';
 const $$ = (selector) => document.querySelectorAll(selector);
 const $ = (selector) => document.querySelector(selector);
 
-// product 섹션
 const productSection = $('.product');
 
 // product 불러오기
@@ -55,10 +54,10 @@ function filterProduct() {
   });
 }
 
-// 선택한 카테고리 필터 표시
-const selectedFilters = $('.filter_list');
-
+// 선택한 카테고리 필터 상단에 표시
 function showCategory(category) {
+  const selectedFilters = $('.filter_list');
+
   const selectedCategory = `
   <li class="filter_item">${category}
     <button type="button" class="remove_filter_btn">X</button>
@@ -85,10 +84,11 @@ function showCategory(category) {
 }
 
 // 필터링한 상품 보여주기
-const categories = $$('.category_item');
 let selectedFilterList = [];
 
 function showProduct() {
+  const categories = $$('.category_item');
+
   categories.forEach((categoryItem) => {
     categoryItem.addEventListener('click', () => {
       const category = categoryItem.dataset.category;
