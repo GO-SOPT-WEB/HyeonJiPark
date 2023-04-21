@@ -220,3 +220,59 @@ header > h1 {
   color: var(--text-color-gray);
   font-size: 1rem;
 }
+
+/* ----------------- 모달 ----------------- */
+
+.modal_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 30rem;
+  height: 15rem;
+
+  border-radius: 2rem;
+  background-color: var(--text-color-white);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.modal > input {
+  padding-left: 1rem;
+  width: 25rem;
+  height: 3.2rem;
+
+  border: none;
+  border-radius: 1.5rem;
+  outline: none;
+  color: var(--bg-color-darkgray);
+  background-color: rgb(233, 233, 233);
+  font-size: 1.5rem;
+}
+
+.modal_add_btn {
+  width: max-content;
+  padding: 0.7rem 1.5rem;
+
+  background: inherit;
+  border: none;
+  border-radius: 2rem;
+  color: var(--bg-color-white);
+  background-color: var(--bg-color-darkgray);
+  font-size: 1.4rem;
+}
+
+.modal_add_btn:hover {
+  background-color: var(--text-color-gray);
+}

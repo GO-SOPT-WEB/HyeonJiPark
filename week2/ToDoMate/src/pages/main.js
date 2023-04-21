@@ -1,6 +1,7 @@
 import { navigate } from '../utils/navigate';
-import { $ } from '../utils/querySelector';
+import { $, $$ } from '../utils/querySelector';
 import { IcTodo, IcTodoChecked } from '../assets/icons';
+import { addTodoList } from '../components/todo';
 import { todoList } from '../constants/todoList';
 import '../../style.css';
 
@@ -164,6 +165,14 @@ function Main($container) {
         default:
           break;
       }
+    });
+
+    const addTodoButtons = $$('.addTodo_btn');
+    addTodoButtons.forEach((button) => {
+      button.addEventListener('click', function () {
+        addTodoList('todo');
+        // console.log('ddd');
+      });
     });
   };
 
