@@ -8,7 +8,7 @@ function Router($container) {
 
   const route = () => {
     currentPage = null;
-    const TargetPage = findMatchedRoute()?.element;
+    const TargetPage = findMatchedRoute().element;
     currentPage = new TargetPage(this.$container);
   };
 

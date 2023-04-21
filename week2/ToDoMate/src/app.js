@@ -9,7 +9,7 @@ function App($container) {
   const init = () => {
     $('.nav_wrapper').addEventListener('click', (e) => {
       const target = e.target.closest('a');
-      if (!(target instanceof HTMLAnchorElement)) return;
+      if (!target) return;
 
       e.preventDefault();
       const targetURL = e.target.href.replace(BASE_URL, '');
