@@ -22,7 +22,7 @@ function My($container) {
           </main>
         `;
 
-    const categories = document.$$('.category');
+    const categories = $$('.category');
 
     let draggedItem = null;
 
