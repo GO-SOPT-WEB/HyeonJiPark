@@ -4,10 +4,10 @@ import { IcTodo, IcTodoChecked } from '../assets/icons';
 import { addTodoList } from '../components/todo';
 import { todoList } from '../constants/todoList';
 import '../../style.css';
+import { uncheckedCount, updateCount } from '../constants/constant';
 
 function Main($container) {
-  let uncheckedCount = todoList.length;
-
+  updateCount(todoList.length);
   this.$container = $container;
 
   this.setState = () => {
@@ -130,13 +130,13 @@ function Main($container) {
           img.setAttribute('src', IcTodoChecked);
           img.setAttribute('alt', 'todo-checked');
           img.classList.add('checked');
-          uncheckedCount--;
+          updateCount(uncheckedCount - 1);
           uncheckedCountDisplay.textContent = uncheckedCount;
         } else {
           img.setAttribute('src', IcTodo);
           img.setAttribute('alt', 'todo-unchecked');
           img.classList.remove('checked');
-          uncheckedCount++;
+          updateCount(uncheckedCount + 1);
           uncheckedCountDisplay.textContent = uncheckedCount;
         }
       });
@@ -171,7 +171,7 @@ function Main($container) {
     addTodoButtons.forEach((button) => {
       button.addEventListener('click', function (e) {
         const category = e.target.parentNode.innerText.slice(0, -1).trim('').toLowerCase();
-        addTodoList(category);
+        addTodoList(category, uncheckedCountDisplay);
       });
     });
   };

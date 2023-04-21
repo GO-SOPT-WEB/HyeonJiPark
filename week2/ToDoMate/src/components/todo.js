@@ -1,11 +1,11 @@
 import { $ } from '../utils/querySelector';
-import { IcTodo } from '../assets/icons';
+import { IcTodo, IcTodoChecked } from '../assets/icons';
 
-export function addTodoList(category) {
-  // Find the <ul> element for the given category
+export function addTodoList(category, uncheckedCountDisplay) {
+  // let uncheckedCount = inCompletedCount;
   const ul = $(`.todo_category.${category} ul`);
 
-  // Create the modal HTML
+  // 모달 생성
   const modalHTML = `
     <div class="modal_wrapper">
       <div class="modal">
@@ -15,41 +15,47 @@ export function addTodoList(category) {
     </div>
   `;
 
-  // Append the modal to the <body> element
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 
-  // Get references to the modal and its input element
-  const modal = $('.modal');
-  console.log(modal.parentNode);
+  const modalSection = $('.modal');
   const input = $('input');
 
-  // Add an event listener to the "Add" button
   const addBtn = $('.modal_add_btn');
-  console.log(input);
   addBtn.addEventListener('click', function () {
     const todoText = input.value.trim();
-    console.log(todoText);
 
-    // If the input is not empty, create a new todo item and append it to the <ul>
+    // 작성한 투두리스트 추가
     if (todoText) {
       const li = document.createElement('li');
       const label = document.createElement('label');
       const img = document.createElement('img');
       img.setAttribute('src', IcTodo);
       img.setAttribute('alt', 'todo-unchecked');
+
+      // 완료한 투두 체크 및 카운트
+      img.addEventListener('click', function () {
+        if (img.getAttribute('alt') === 'todo-unchecked') {
+          img.setAttribute('src', IcTodoChecked);
+          img.setAttribute('alt', 'todo-checked');
+          uncheckedCount--;
+          uncheckedCountDisplay.textContent = inCompletedCount;
+        } else {
+          img.setAttribute('src', IcTodo);
+          img.setAttribute('alt', 'todo-unchecked');
+          uncheckedCount++;
+          uncheckedCountDisplay.textContent = inCompletedCount;
+        }
+      });
+
       label.appendChild(img);
       label.appendChild(document.createTextNode(todoText));
       li.classList.add('category_item');
       li.appendChild(label);
       ul.appendChild(li);
-      modal.parentNode.remove(); // Remove the modal from the DOM
-    }
-  });
-
-  // Add an event listener to the "Escape" key to close the modal
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-      modal.remove(); // Remove the modal from the DOM
+      uncheckedCount++;
+      console.log(inCompletedCount);
+      uncheckedCountDisplay.textContent = inCompletedCount;
+      modalSection.parentNode.remove();
     }
   });
 }
