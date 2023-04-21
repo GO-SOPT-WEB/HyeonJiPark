@@ -314,6 +314,7 @@ header > h1 {
 
   padding: 0;
 }
+
 .myCategory > ul > li {
   list-style: none;
   padding: 1rem;
@@ -322,4 +323,8 @@ header > h1 {
   font-size: 1.1rem;
   font-weight: 500;
   border-radius: 2.5rem;
+}
+
+.category.dragging {
+  opacity: 0.5;
 }
