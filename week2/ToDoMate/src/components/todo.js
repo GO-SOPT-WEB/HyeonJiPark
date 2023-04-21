@@ -22,6 +22,15 @@ export function addTodoList(category, uncheckedCountDisplay) {
   addBtn.addEventListener('click', function () {
     const todoText = input.value.trim();
 
+    // 이미 추가된 todo인지 확인
+    const labels = document.querySelectorAll(`.todo_category.${category} label`);
+    const existingTodo = Array.from(labels).find((label) => label.textContent === todoText);
+
+    if (existingTodo) {
+      alert('이미 추가된 todo입니다.');
+      return;
+    }
+
     // 작성한 투두리스트 추가
     if (todoText) {
       const ul = $(`.todo_category.${category} ul`);
