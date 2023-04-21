@@ -49,6 +49,7 @@ function My($container) {
 
       category.addEventListener('drop', () => {
         const dropAfter = category.classList.contains('drop-after');
+
         if (draggedItem !== category) {
           if (dropAfter) {
             category.after(draggedItem);
@@ -62,9 +63,32 @@ function My($container) {
       category.addEventListener('dragend', () => {
         draggedItem.classList.remove('dragging');
         draggedItem = null;
+        saveOrder();
       });
     });
+
+    function saveOrder() {
+      const categories = document.querySelectorAll('.category');
+      const order = Array.from(categories).map((category) => category.classList[1]);
+      localStorage.setItem('categoryOrder', JSON.stringify(order));
+    }
   };
+
+  const savedOrder = JSON.parse(localStorage.getItem('categoryOrder'));
+  if (savedOrder) {
+    const categories = $$('.category');
+    const categoryMap = new Map();
+    categories.forEach((category) => {
+      categoryMap.set(category.classList[1], category);
+    });
+    savedOrder.forEach((category) => {
+      const categoryEl = categoryMap.get(category);
+      if (categoryEl) {
+        categoryEl.parentElement.appendChild(categoryEl);
+      }
+    });
+  }
+
   this.render();
 }
 
