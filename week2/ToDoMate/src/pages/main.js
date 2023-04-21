@@ -169,9 +169,9 @@ function Main($container) {
 
     const addTodoButtons = $$('.addTodo_btn');
     addTodoButtons.forEach((button) => {
-      button.addEventListener('click', function () {
-        addTodoList('todo');
-        // console.log('ddd');
+      button.addEventListener('click', function (e) {
+        const category = e.target.parentNode.innerText.slice(0, -1).trim('').toLowerCase();
+        addTodoList(category);
       });
     });
   };

@@ -1,9 +1,9 @@
 import { $ } from '../utils/querySelector';
+import { IcTodo } from '../assets/icons';
 
 export function addTodoList(category) {
   // Find the <ul> element for the given category
   const ul = $(`.todo_category.${category} ul`);
-  console.log(ul);
 
   // Create the modal HTML
   const modalHTML = `
@@ -20,26 +20,29 @@ export function addTodoList(category) {
 
   // Get references to the modal and its input element
   const modal = $('.modal');
+  console.log(modal.parentNode);
   const input = $('input');
 
   // Add an event listener to the "Add" button
-  const addBtn = $('.modal-add-btn');
+  const addBtn = $('.modal_add_btn');
+  console.log(input);
   addBtn.addEventListener('click', function () {
     const todoText = input.value.trim();
+    console.log(todoText);
 
     // If the input is not empty, create a new todo item and append it to the <ul>
     if (todoText) {
       const li = document.createElement('li');
       const label = document.createElement('label');
       const img = document.createElement('img');
-      img.setAttribute('src', '/assets/icons/ic-todo.svg');
+      img.setAttribute('src', IcTodo);
       img.setAttribute('alt', 'todo-unchecked');
       label.appendChild(img);
       label.appendChild(document.createTextNode(todoText));
       li.classList.add('category_item');
       li.appendChild(label);
       ul.appendChild(li);
-      modal.remove(); // Remove the modal from the DOM
+      modal.parentNode.remove(); // Remove the modal from the DOM
     }
   });
 
