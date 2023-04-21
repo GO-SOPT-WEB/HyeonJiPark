@@ -3,11 +3,8 @@ import { IcTodo, IcTodoChecked } from '../assets/icons';
 import { uncheckedCount, updateCount } from '../constants/constant';
 
 export function addTodoList(category, uncheckedCountDisplay) {
-  // let uncheckedCount = inCompletedCount;
-  const ul = $(`.todo_category.${category} ul`);
-
   // 모달 생성
-  const modalHTML = `
+  const modal = `
     <div class="modal_wrapper">
       <div class="modal">
         <input type="text" placeholder="추가할 투두를 입력하세요." />
@@ -15,18 +12,18 @@ export function addTodoList(category, uncheckedCountDisplay) {
       </div>
     </div>
   `;
-
-  document.body.insertAdjacentHTML('beforeend', modalHTML);
+  document.body.insertAdjacentHTML('beforeend', modal);
 
   const modalSection = $('.modal');
   const input = $('input');
-
   const addBtn = $('.modal_add_btn');
+
   addBtn.addEventListener('click', function () {
     const todoText = input.value.trim();
 
     // 작성한 투두리스트 추가
     if (todoText) {
+      const ul = $(`.todo_category.${category} ul`);
       const li = document.createElement('li');
       const label = document.createElement('label');
       const img = document.createElement('img');

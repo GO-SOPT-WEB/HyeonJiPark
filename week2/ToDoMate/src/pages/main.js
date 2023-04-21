@@ -3,11 +3,10 @@ import { $, $$ } from '../utils/querySelector';
 import { IcTodo, IcTodoChecked } from '../assets/icons';
 import { addTodoList } from '../components/todo';
 import { todoList } from '../constants/todoList';
-import '../../style.css';
 import { uncheckedCount, updateCount } from '../constants/constant';
+import '../../style.css';
 
 function Main($container) {
-  updateCount(todoList.length);
   this.$container = $container;
 
   this.setState = () => {
@@ -115,6 +114,8 @@ function Main($container) {
     const sopt = $('.todo_category.sopt ul');
     const etc = $('.todo_category.etc ul');
 
+    // 미완료 투두 개수
+    updateCount(todoList.length);
     const uncheckedCountDisplay = $('.unchecked-count');
 
     todoList.forEach((item) => {
@@ -167,6 +168,7 @@ function Main($container) {
       }
     });
 
+    // 카테고리별 투두리스트 추가 버튼
     const addTodoButtons = $$('.addTodo_btn');
     addTodoButtons.forEach((button) => {
       button.addEventListener('click', function (e) {
