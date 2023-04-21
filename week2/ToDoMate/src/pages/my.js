@@ -9,8 +9,15 @@ function My($container) {
   this.render = () => {
     this.$container.innerHTML = `
           <main class="myPage">
-            마이페이지
-            <img src="${IcMy}" alt="MyPage-아이콘" />
+            <section class="myCategory">
+              <h1>MY CATEGORY</h1>
+              <ul>
+                <li class="today" draggable="true">TODAY</li>
+                <li class="todo" draggable="true">TODO</li>
+                <li class="study" draggable="true">STUDY</li>
+                <li class="sopt" draggable="true">SOPT</li>
+              </ul>
+            </section>
           </main>
         `;
   };

@@ -276,3 +276,50 @@ header > h1 {
 .modal_add_btn:hover {
   background-color: var(--text-color-gray);
 }
+
+/* ----------------- 마이페이지 ----------------- */
+
+.myPage {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  margin-top: 10rem;
+}
+
+.myCategory {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+
+  width: 80%;
+  height: 15rem;
+
+  background-color: rgba(80, 80, 80, 0.8);
+  border-radius: 2.5rem;
+}
+
+.myCategory > h1 {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.myCategory > ul {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  padding: 0;
+}
+.myCategory > ul > li {
+  list-style: none;
+  padding: 1rem;
+
+  background-color: #767777;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 2.5rem;
+}
