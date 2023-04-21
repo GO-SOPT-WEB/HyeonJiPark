@@ -1,5 +1,6 @@
 import { $ } from '../utils/querySelector';
 import { IcTodo, IcTodoChecked } from '../assets/icons';
+import { uncheckedCount, updateCount } from '../constants/constant';
 
 export function addTodoList(category, uncheckedCountDisplay) {
   // let uncheckedCount = inCompletedCount;
@@ -37,13 +38,13 @@ export function addTodoList(category, uncheckedCountDisplay) {
         if (img.getAttribute('alt') === 'todo-unchecked') {
           img.setAttribute('src', IcTodoChecked);
           img.setAttribute('alt', 'todo-checked');
-          uncheckedCount--;
-          uncheckedCountDisplay.textContent = inCompletedCount;
+          updateCount(uncheckedCount - 1);
+          uncheckedCountDisplay.textContent = uncheckedCount;
         } else {
           img.setAttribute('src', IcTodo);
           img.setAttribute('alt', 'todo-unchecked');
-          uncheckedCount++;
-          uncheckedCountDisplay.textContent = inCompletedCount;
+          updateCount(uncheckedCount + 1);
+          uncheckedCountDisplay.textContent = uncheckedCount;
         }
       });
 
@@ -52,9 +53,8 @@ export function addTodoList(category, uncheckedCountDisplay) {
       li.classList.add('category_item');
       li.appendChild(label);
       ul.appendChild(li);
-      uncheckedCount++;
-      console.log(inCompletedCount);
-      uncheckedCountDisplay.textContent = inCompletedCount;
+      updateCount(uncheckedCount + 1);
+      uncheckedCountDisplay.textContent = uncheckedCount;
       modalSection.parentNode.remove();
     }
   });
