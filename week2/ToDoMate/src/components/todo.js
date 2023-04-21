@@ -16,6 +16,7 @@ export function addTodoList(category, uncheckedCountDisplay) {
 
   const modalSection = $('.modal');
   const input = $('input');
+  input.focus();
   const addBtn = $('.modal_add_btn');
 
   addBtn.addEventListener('click', function () {
