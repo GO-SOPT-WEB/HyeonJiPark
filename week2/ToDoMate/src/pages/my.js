@@ -1,4 +1,4 @@
-import { $, $$ } from '../utils/querySelector';
+import { $$ } from '../utils/querySelector';
 
 function My($container) {
   this.$container = $container;
@@ -22,7 +22,7 @@ function My($container) {
           </main>
         `;
 
-    const categories = document.querySelectorAll('.category');
+    const categories = document.$$('.category');
 
     let draggedItem = null;
 
