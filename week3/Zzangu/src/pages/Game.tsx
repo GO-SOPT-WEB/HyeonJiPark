@@ -24,5 +24,19 @@ const GameWrapper = styled.section`
 `;
 
 const StMode = styled.nav`
-  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  height: 7rem;
+
+  & > button {
+    padding: 1rem 2rem;
+
+    border-radius: 1rem;
+    color: ${({ theme }) => theme.colors.Zzangu_White};
+    background-color: ${({ theme }) => theme.colors.Zzangu_Gray};
+    ${({ theme }) => theme.fonts.ZZangu_Pretendard_Medium_16};
+  }
 `;
