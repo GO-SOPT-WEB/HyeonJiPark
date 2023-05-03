@@ -1,6 +1,8 @@
 import React from 'react';
-import Header from '../components/Header';
 import styled from 'styled-components';
+
+import Header from '../components/Header';
+import Card from '../components/Card';
 
 const Game = () => {
   return (
@@ -11,6 +13,7 @@ const Game = () => {
         <button type='button'>Normal</button>
         <button type='button'>Hard</button>
       </StMode>
+      <Card />
       게임 페이지입니다!
     </GameWrapper>
   );
