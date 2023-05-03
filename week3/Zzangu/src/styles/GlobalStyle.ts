@@ -134,6 +134,8 @@ export const reset = css`
     border-spacing: 0;
   }
   button {
+    background: inherit;
+    border: none;
     cursor: pointer;
   }
 `;

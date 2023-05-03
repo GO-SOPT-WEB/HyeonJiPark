@@ -36,10 +36,8 @@ const StHeader = styled.header`
 
     padding: 1rem 2rem;
 
-    background: inherit;
     background-color: ${({ theme }) => theme.colors.Zzangu_Yellow};
     ${({ theme }) => theme.fonts.ZZangu_Pretendard_Semibold_20};
-    border: none;
     border-radius: 2rem;
   }
 `;
