@@ -5,15 +5,16 @@ declare module 'styled-components' {
     colors: {
       Zzangu_Red: string;
       Zzangu_Yellow: string;
+      Zzangu_YellowBorder: string;
       Zzangu_SkyBlue: string;
       Zzangu_Gray: string;
       Zzangu_Black: string;
       Zzangu_White: string;
-      Zzangu_lightPink: string;
-      Zzangu_pink: string;
-      Zzangu_darkPink: string;
-      Zzangu_pinkBorder: string;
-      Zzangu_pinkShadow: string;
+      Zzangu_LightPink: string;
+      Zzangu_Pink: string;
+      Zzangu_DarkPink: string;
+      Zzangu_PinkBorder: string;
+      Zzangu_PinkShadow: string;
     };
     fonts: {
       ZZangu_Pretendard_Bold_35: SerializedStyles;

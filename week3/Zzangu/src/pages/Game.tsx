@@ -90,12 +90,13 @@ const StMode = styled.nav`
     padding: 1rem 2rem;
     ${({ theme }) => theme.fonts.ZZangu_Pretendard_Medium_16};
 
-    background: ${({ theme }) => theme.colors.Zzangu_lightPink};
-    border: 0.2rem solid ${({ theme }) => theme.colors.Zzangu_pinkBorder};
+    color: ${({ theme }) => theme.colors.Zzangu_PinkBorder};
+    background: ${({ theme }) => theme.colors.Zzangu_LightPink};
+    border: 0.2rem solid ${({ theme }) => theme.colors.Zzangu_PinkBorder};
     border-radius: 1.5rem;
     transform-style: preserve-3d;
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1);
-    background: 150ms cubic-bezier(0, 0, 0.58, 1);
+    /* background: 150ms cubic-bezier(0, 0, 0.58, 1); */
 
     &::before {
       position: absolute;
@@ -104,32 +105,32 @@ const StMode = styled.nav`
       height: 100%;
       top: 0;
       left: 0;
-      background: ${({ theme }) => theme.colors.Zzangu_darkPink};
+      background: ${({ theme }) => theme.colors.Zzangu_DarkPink};
       border-radius: inherit;
-      box-shadow: 0 0 0 0.2rem ${({ theme }) => theme.colors.Zzangu_pinkBorder};
+      box-shadow: 0 0 0 0.2rem ${({ theme }) => theme.colors.Zzangu_PinkBorder};
       transform: translate3d(0, 0.75rem, -1rem);
       transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
         box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
     }
 
     &:hover {
-      background: ${({ theme }) => theme.colors.Zzangu_pink};
+      background: ${({ theme }) => theme.colors.Zzangu_Pink};
       transform: translate(0, 0.25em);
 
       &::before {
-        box-shadow: 0 0 0 0.2rem ${({ theme }) => theme.colors.Zzangu_pinkBorder},
-          0 0.5rem 0 0 ${({ theme }) => theme.colors.Zzangu_pinkShadow};
+        box-shadow: 0 0 0 0.2rem ${({ theme }) => theme.colors.Zzangu_PinkBorder},
+          0 0.5rem 0 0 ${({ theme }) => theme.colors.Zzangu_PinkShadow};
         transform: translate3d(0, 0.5rem, -1rem);
       }
     }
 
     &:active {
-      background: ${({ theme }) => theme.colors.Zzangu_pink};
+      background: ${({ theme }) => theme.colors.Zzangu_Pink};
       transform: translate(0rem, 0.75rem);
 
       &::before {
-        box-shadow: 0 0 0 0.2rem ${({ theme }) => theme.colors.Zzangu_pinkBorder},
-          0 0 ${({ theme }) => theme.colors.Zzangu_pinkShadow};
+        box-shadow: 0 0 0 0.2rem ${({ theme }) => theme.colors.Zzangu_PinkBorder},
+          0 0 ${({ theme }) => theme.colors.Zzangu_PinkShadow};
         transform: translate3d(0, 0, -1em);
       }
     }

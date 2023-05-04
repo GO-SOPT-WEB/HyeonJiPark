@@ -2,16 +2,17 @@ import { css, DefaultTheme } from 'styled-components';
 
 const colors = {
   Zzangu_Red: '#E2202F',
-  Zzangu_Yellow: '#F7EA10',
+  Zzangu_Yellow: '#ffe9ad',
+  Zzangu_YellowBorder: '#ffd35a',
   Zzangu_SkyBlue: '#BCE4FC',
   Zzangu_Gray: '#777678',
   Zzangu_Black: '#000000',
   Zzangu_White: '#FFFFFF',
-  Zzangu_lightPink: '#fff0f0',
-  Zzangu_pink: '#ffe9e9',
-  Zzangu_darkPink: '#f9c4d2',
-  Zzangu_pinkBorder: '#b18597',
-  Zzangu_pinkShadow: '#ffe3e2',
+  Zzangu_LightPink: '#fff0f0',
+  Zzangu_Pink: '#ffe9e9',
+  Zzangu_DarkPink: '#f9c4d2',
+  Zzangu_PinkBorder: '#b18597',
+  Zzangu_PinkShadow: '#ffe3e2',
 };
 
 const fonts = {
