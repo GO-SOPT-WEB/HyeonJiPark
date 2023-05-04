@@ -4,15 +4,16 @@ import styled from 'styled-components';
 import { ImgZzanguBack } from '../assets/images';
 
 interface CardProps {
+  id: number;
   src: string;
   alt: string;
   isFlipped: boolean;
   handleClick: (id: number) => void;
 }
 
-const Card = ({ src, alt, isFlipped, handleClick }: CardProps) => {
+const Card = ({ id, src, alt, isFlipped, handleClick }: CardProps) => {
   return (
-    <StCardWrapper>
+    <StCardWrapper onClick={() => handleClick(id)}>
       {isFlipped ? <img src={src} alt={alt} /> : <img src={ImgZzanguBack} alt='카드뒷면' />}
     </StCardWrapper>
   );

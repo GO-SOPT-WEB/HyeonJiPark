@@ -30,13 +30,16 @@ const Game = () => {
 
   // 카드 뒤집기
   const flipCard = (id: number) => {
-    return cardList.map((card) => {
+    const newCardList = cardList.map((card) => {
       const showCard = { ...card };
       if (showCard.id === id) {
         showCard.flipped = true;
+        console.log(id);
       }
       return showCard;
     });
+
+    setCardList(newCardList);
   };
 
   // 카드 클릭 시
@@ -50,14 +53,16 @@ const Game = () => {
       return (
         <Card
           key={card.id}
+          id={card.id}
           src={card.src}
           alt={card.alt}
           isFlipped={card.flipped}
-          handleClick={handleClick}
+          handleClick={() => handleClick(card.id)}
         />
       );
     });
   };
+
   return (
     <GameWrapper>
       <Header />
