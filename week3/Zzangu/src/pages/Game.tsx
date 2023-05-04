@@ -6,17 +6,40 @@ import Card from '../components/Card';
 import ZZANGU_LIST from '../datas/zzanguList';
 import { Zzangu } from '../datas/zzanguList';
 
+interface Cards {
+  id: number;
+  src: string;
+  alt: string;
+  flipped: boolean;
+  matched: boolean;
+}
+
 const Game = () => {
   // 카드 섞기
-  const shuffleCards = () => {
-    return [...ZZANGU_LIST, ...ZZANGU_LIST].sort((first, second) => 0.5 - Math.random());
+  const shuffleCards = (card: Zzangu[]) => {
+    const duplicatedCards = [...card, ...card];
+
+    let currentIndex = duplicatedCards.length,
+      temporaryValue,
+      randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = card[currentIndex];
+
+      if (temporaryValue) {
+        duplicatedCards[currentIndex] = duplicatedCards[randomIndex];
+        duplicatedCards[randomIndex] = temporaryValue;
+      }
+    }
+    return duplicatedCards;
   };
 
   // 섞은 카드 리스트
-  const [cardList, setCardList] = useState(
-    shuffleCards().map((card: Zzangu) => {
+  const [cardList, setCardList] = useState<Cards[]>(
+    shuffleCards(ZZANGU_LIST).map((card: Zzangu, index: number) => {
       return {
-        id: card.id,
+        id: index,
         src: card.src,
         alt: card.alt,
         flipped: false,
@@ -26,14 +49,15 @@ const Game = () => {
   );
 
   // 뒤집은 카드 리스트
-  const [flippedCardList, setFlippedCardList] = useState([]);
+  const [flippedCardList, setFlippedCardList] = useState<Zzangu[]>([]);
 
   // 카드 뒤집기
   const flipCard = (id: number) => {
     const newCardList = cardList.map((card) => {
       const showCard = { ...card };
-      if (showCard.id === id) {
+      if (showCard.id === id && !showCard.flipped && !showCard.matched) {
         showCard.flipped = true;
+        setFlippedCardList([...flippedCardList, showCard]);
         console.log(id);
       }
       return showCard;
@@ -42,11 +66,44 @@ const Game = () => {
     setCardList(newCardList);
   };
 
+  // 카드 매칭되었는지 확인
+  const isMatchedCard = (first: Zzangu, second: Zzangu) => {
+    return first.id === second.id;
+  };
+
+  // 카드 매칭 시
+  const handleMatchedCard = (first: Zzangu, second: Zzangu) => {
+    const newCardList = cardList.map((card) => {
+      const matchedCard = { ...card };
+      if (isMatchedCard(first, matchedCard) || isMatchedCard(second, matchedCard)) {
+        matchedCard.matched = true;
+      }
+      return matchedCard;
+    });
+    setCardList(newCardList);
+  };
+
   // 카드 클릭 시
   const handleClick = (id: number) => {
     flipCard(id);
-  };
+    // 두 개의 카드가 뒤집혔을 때
+    if (flippedCardList.length === 1) {
+      const [card1] = flippedCardList;
+      const card2 = cardList.find((card) => card.flipped && !card.matched);
 
+      // 두 카드가 매칭된 경우
+      if (card2 && isMatchedCard(card1, card2)) {
+        handleMatchedCard(card1, card2);
+        console.log('매칭');
+      } else {
+        // 두 카드가 매칭되지 않은 경우
+        console.log('매칭실패');
+      }
+    } else {
+      //   setFlippedCardList([cardList.find((card) => card.id === id)]);
+    }
+  };
+  console.log(cardList);
   // 카드 배치하기
   const generateCards = () => {
     return cardList.map((card) => {
