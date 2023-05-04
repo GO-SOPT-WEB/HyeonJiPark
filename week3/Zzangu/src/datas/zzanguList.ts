@@ -10,7 +10,13 @@ import {
   ImgZzangu09,
 } from '../assets/images';
 
-const ZZANGU_LIST = [
+export interface Zzangu {
+  id: number;
+  src: string;
+  alt: string;
+}
+
+const ZZANGU_LIST: Zzangu[] = [
   {
     id: 1,
     src: ImgZzangu01,

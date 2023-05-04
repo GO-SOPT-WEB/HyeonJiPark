@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/GlobalStyle';
 import theme from './styles/theme';
 import Game from './pages/Game';
+import ZZANGU_LIST from './datas/zzanguList';
 
 function App() {
   return (
