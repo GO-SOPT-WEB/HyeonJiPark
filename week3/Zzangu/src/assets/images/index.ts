@@ -7,3 +7,4 @@ export { default as ImgZzangu06 } from './Img_zzangu_06.jpeg';
 export { default as ImgZzangu07 } from './Img_zzangu_07.jpeg';
 export { default as ImgZzangu08 } from './Img_zzangu_08.jpeg';
 export { default as ImgZzangu09 } from './Img_zzangu_09.jpeg';
+export { default as ImgZzanguBack } from './Img_zzangu_Back.svg';

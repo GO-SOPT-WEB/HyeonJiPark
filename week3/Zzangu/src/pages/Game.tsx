@@ -32,16 +32,16 @@ const Game = () => {
   const flipCard = (id: number) => {
     return cardList.map((card) => {
       const showCard = { ...card };
-      // if (showCard.id === id)
+      if (showCard.id === id) {
+        showCard.flipped = true;
+      }
+      return showCard;
     });
   };
 
   // 카드 클릭 시
-  const hancleClick = (id: number) => {
-    const selectedCard = cardList.map((card) => {
-      if (card.id === id) {
-      }
-    });
+  const handleClick = (id: number) => {
+    flipCard(id);
   };
 
   // 카드 배치하기
@@ -53,7 +53,7 @@ const Game = () => {
           src={card.src}
           alt={card.alt}
           isFlipped={card.flipped}
-          handleClick={hancleClick}
+          handleClick={handleClick}
         />
       );
     });

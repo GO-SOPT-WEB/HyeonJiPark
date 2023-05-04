@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { ImgZzanguBack } from '../assets/images';
+
 interface CardProps {
   src: string;
   alt: string;
@@ -11,7 +13,7 @@ interface CardProps {
 const Card = ({ src, alt, isFlipped, handleClick }: CardProps) => {
   return (
     <StCardWrapper>
-      <img src={src} alt={alt} />
+      {isFlipped ? <img src={src} alt={alt} /> : <img src={ImgZzanguBack} alt='카드뒷면' />}
     </StCardWrapper>
   );
 };
