@@ -7,6 +7,11 @@ const colors = {
   Zzangu_Gray: '#777678',
   Zzangu_Black: '#000000',
   Zzangu_White: '#FFFFFF',
+  Zzangu_lightPink: '#fff0f0',
+  Zzangu_pink: '#ffe9e9',
+  Zzangu_darkPink: '#f9c4d2',
+  Zzangu_pinkBorder: '#b18597',
+  Zzangu_pinkShadow: '#ffe3e2',
 };
 
 const fonts = {
