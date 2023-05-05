@@ -1,4 +1,4 @@
-import React, { Children, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
@@ -126,9 +126,7 @@ const Game = () => {
 
   // 카드 매칭되었는지 확인
   const isMatchedCard = (first: Cards, second: Cards) => {
-    if (first) {
-      return first.answer === second.answer;
-    } else return null;
+    return first.answer === second.answer;
   };
 
   // 카드 매칭 시

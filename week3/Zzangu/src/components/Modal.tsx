@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDom, { createPortal } from 'react-dom';
+import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
 interface ModalProps {
