@@ -120,8 +120,6 @@ const Game = () => {
   useEffect(() => {
     // 두 개의 카드가 뒤집혔을 때
     if (flippedCards.length === 2) {
-      console.log(flippedCards, '두개 뒤집힘');
-
       // 두 개의 카드가 뒤집힌 후에 두 번째 카드를 찾음
       setTimeout(() => {
         const card1 = cardList[flippedCards[0]];
@@ -149,7 +147,6 @@ const Game = () => {
 
   // 카드 뒤집기
   const flipCard = (id: number) => {
-    console.log(id);
     setFlippedCards([...flippedCards, id]);
 
     const newCardList = cardList.map((card) => {
@@ -165,10 +162,7 @@ const Game = () => {
 
   // 카드 매칭되었는지 확인
   const isMatchedCard = (first: Cards, second: Cards) => {
-    console.log('매칭 확인');
     if (first) {
-      console.log('first', first.answer);
-      console.log('second', second.answer);
       return first.answer === second.answer;
     } else return null;
   };
@@ -214,7 +208,6 @@ const Game = () => {
 
   useEffect(() => {
     if (isOver) {
-      console.log('게임 끝!');
       resetGame();
       return;
     }
