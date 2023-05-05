@@ -20,8 +20,8 @@ declare module 'styled-components' {
     fonts: {
       ZZangu_Title: SerializedStyles;
       ZZangu_Score: SerializedStyles;
-      ZZangu_Pretendard_Semibold_20: SerializedStyles;
-      ZZangu_Pretendard_Medium_16: SerializedStyles;
+      ZZangu_Button1: SerializedStyles;
+      ZZangu_Button2: SerializedStyles;
     };
   }
 }

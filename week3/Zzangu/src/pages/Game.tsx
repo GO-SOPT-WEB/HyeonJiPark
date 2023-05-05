@@ -228,7 +228,7 @@ const StMode = styled.nav`
 
   & > .modeBtn {
     padding: 1rem 2rem;
-    ${({ theme }) => theme.fonts.ZZangu_Pretendard_Medium_16};
+    ${({ theme }) => theme.fonts.ZZangu_Button2};
 
     color: ${({ theme }) => theme.colors.Zzangu_PinkBorder};
     background: ${({ theme }) => theme.colors.Zzangu_LightPink};
@@ -284,7 +284,7 @@ const StMode = styled.nav`
 
     color: ${({ theme }) => theme.colors.Zzangu_YellowBorder};
     background: ${({ theme }) => theme.colors.Zzangu_Yellow};
-    ${({ theme }) => theme.fonts.ZZangu_Pretendard_Semibold_20};
+    ${({ theme }) => theme.fonts.ZZangu_Button1};
     border: 0.3rem solid ${({ theme }) => theme.colors.Zzangu_YellowBorder};
     border-radius: 5rem;
     transition: all 0.3s ease-in-out;

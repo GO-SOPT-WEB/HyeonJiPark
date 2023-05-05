@@ -32,14 +32,14 @@ const fonts = {
     font-style: normal;
     line-height: 3rem;
   `,
-  ZZangu_Pretendard_Semibold_20: css`
+  ZZangu_Button1: css`
     font-family: 'SDSamliphopangche_Outline';
     font-style: normal;
     font-weight: 600;
     font-size: 2rem;
     line-height: 2.4rem;
   `,
-  ZZangu_Pretendard_Medium_16: css`
+  ZZangu_Button2: css`
     font-family: 'SDSamliphopangche_Outline';
     font-style: normal;
     font-weight: 500;
