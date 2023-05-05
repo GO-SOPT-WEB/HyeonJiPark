@@ -23,9 +23,9 @@ const Game = () => {
   const [isOver, setIsOver] = useState(false);
 
   // 선택한 난이도에 따라 카드 배치
-  const changeMode = (MODE: string) => {
+  const changeMode = (MODE: number) => {
     switch (MODE) {
-      case 'EASY':
+      case EASY_MODE:
         setMode(EASY_MODE);
         setCardList(
           shuffleCards(ZZANGU_LIST.slice(0, EASY_MODE)).map((card: Zzangu, index: number) => {
@@ -41,7 +41,7 @@ const Game = () => {
         );
         generateCards();
         break;
-      case 'NORMAL':
+      case NORMAL_MODE:
         setMode(NORMAL_MODE);
         setCardList(
           shuffleCards(ZZANGU_LIST.slice(0, NORMAL_MODE)).map((card: Zzangu, index: number) => {
@@ -57,7 +57,7 @@ const Game = () => {
         );
         generateCards();
         break;
-      case 'HARD':
+      case HARD_MODE:
         setMode(HARD_MODE);
         setCardList(
           shuffleCards(ZZANGU_LIST.slice(0, HARD_MODE)).map((card: Zzangu, index: number) => {
@@ -219,20 +219,20 @@ const Game = () => {
 
   const resetGame = () => {
     setScore(0);
-    changeMode('EASY');
+    changeMode(mode);
   };
 
   return (
     <GameWrapper>
       <Header mode={mode} score={score} />
       <StMode>
-        <button className='modeBtn' type='button' onClick={() => changeMode('EASY')}>
+        <button className='modeBtn' type='button' onClick={() => changeMode(EASY_MODE)}>
           EASY
         </button>
-        <button className='modeBtn' type='button' onClick={() => changeMode('NORMAL')}>
+        <button className='modeBtn' type='button' onClick={() => changeMode(NORMAL_MODE)}>
           NORMAL
         </button>
-        <button className='modeBtn' type='button' onClick={() => changeMode('HARD')}>
+        <button className='modeBtn' type='button' onClick={() => changeMode(HARD_MODE)}>
           HARD
         </button>
         <button className='resetBtn' type='button' onClick={resetGame}>
