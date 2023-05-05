@@ -12,7 +12,7 @@ interface Cards extends Zzangu {
   matched: boolean;
 }
 
-const EASY_MODE = 5;
+const EASY_MODE = 3;
 const NORMAL_MODE = 7;
 const HARD_MODE = 9;
 
@@ -20,6 +20,7 @@ const Game = () => {
   // 게임 모드(난이도), 점수
   const [mode, setMode] = useState(EASY_MODE);
   const [score, setScore] = useState(0);
+  const [isOver, setIsOver] = useState(false);
 
   // 선택한 난이도에 따라 카드 배치
   const changeMode = (MODE: string) => {
@@ -81,20 +82,20 @@ const Game = () => {
   const shuffleCards = (card: Zzangu[]) => {
     const duplicatedCards = [...card, ...card];
 
-    let currentIndex = duplicatedCards.length,
-      temporaryValue,
-      randomIndex;
+    // let currentIndex = duplicatedCards.length,
+    //   temporaryValue,
+    //   randomIndex;
 
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-      temporaryValue = card[currentIndex];
+    // while (0 !== currentIndex) {
+    //   randomIndex = Math.floor(Math.random() * currentIndex);
+    //   currentIndex -= 1;
+    //   temporaryValue = card[currentIndex];
 
-      if (temporaryValue) {
-        duplicatedCards[currentIndex] = duplicatedCards[randomIndex];
-        duplicatedCards[randomIndex] = temporaryValue;
-      }
-    }
+    //   if (temporaryValue) {
+    //     duplicatedCards[currentIndex] = duplicatedCards[randomIndex];
+    //     duplicatedCards[randomIndex] = temporaryValue;
+    //   }
+    // }
 
     return duplicatedCards;
   };
@@ -183,6 +184,7 @@ const Game = () => {
     });
     setCardList(newCardList);
     setScore((prev) => prev + 1);
+    checkGameOver();
   };
 
   // 카드 클릭 시
@@ -191,8 +193,6 @@ const Game = () => {
     if (flippedCards.length === 2) {
       return;
     }
-
-    // 카드 뒤집기
     flipCard(id);
   };
 
@@ -210,6 +210,23 @@ const Game = () => {
         />
       );
     });
+  };
+
+  useEffect(() => {
+    if (isOver) {
+      console.log('게임 끝!');
+      resetGame();
+      return;
+    }
+  }, [isOver]);
+
+  const checkGameOver = () => {
+    score === mode - 1 ? setIsOver(true) : setIsOver(false);
+  };
+
+  const resetGame = () => {
+    setScore(0);
+    changeMode('EASY');
   };
 
   return (
