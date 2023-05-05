@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { Children, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
 import Card from '../components/Card';
 import ZZANGU_LIST from '../datas/zzanguList';
 import { Zzangu } from '../datas/zzanguList';
+import Modal from '../components/Modal';
 
 interface Cards extends Zzangu {
   answer: number;
@@ -17,11 +18,11 @@ const NORMAL_MODE = 7;
 const HARD_MODE = 9;
 
 const Game = () => {
-  // 게임 모드(난이도), 점수
   const [mode, setMode] = useState(EASY_MODE);
   const [score, setScore] = useState(0);
-  const [isOver, setIsOver] = useState(false);
   const [questionList, setQuestionList] = useState(ZZANGU_LIST);
+  const [isOver, setIsOver] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // 카드 섞기
   const shuffleCards = (card: Zzangu[]) => {
@@ -214,6 +215,7 @@ const Game = () => {
 
   useEffect(() => {
     if (isOver) {
+      setIsModalOpen((prev) => !prev);
       resetGame();
       return;
     }
@@ -246,6 +248,9 @@ const Game = () => {
         </button>
       </StMode>
       <StCards>{generateCards()}</StCards>
+      {isModalOpen && (
+        <Modal isModalOpen={isModalOpen} onClose={() => setIsModalOpen((prev) => !prev)}></Modal>
+      )}
     </GameWrapper>
   );
 };
