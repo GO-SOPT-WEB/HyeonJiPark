@@ -57,29 +57,39 @@ const Game = () => {
   useEffect(() => {
     // 두 개의 카드가 뒤집혔을 때
     if (flippedCards.length === 2) {
-      setTimeout(() => {
-        const card1 = cardList[flippedCards[0]];
-        const card2 = cardList[flippedCards[1]];
+      const card1 = cardList[flippedCards[0]];
+      const card2 = cardList[flippedCards[1]];
 
-        // 두 번째 카드가 매칭된 경우
-        if (card2 && isMatchedCard(card1, card2)) {
-          handleMatchedCard(card1, card2);
-        } else {
-          // 두 번째 카드가 매칭되지 않은 경우
+      setTimeout(() => {
+        // 매칭 성공
+        if (card1.answer === card2.answer) {
           const newCardList = cardList.map((card) => {
-            const flippedCard = { ...card };
-            if (flippedCard.id === flippedCards[0] || flippedCard.id === flippedCards[1]) {
-              flippedCard.flipped = false;
+            if (card.id === card1.id || card.id === card2.id) {
+              return { ...card, matched: true };
             }
-            return flippedCard;
+            return card;
+          });
+          setCardList(newCardList);
+          setScore((prev) => prev + 1);
+          setIsOver(score === mode - 1);
+        } else {
+          // 매칭 실패 시 다시 뒤집기
+          const newCardList = cardList.map((card) => {
+            if (card.id === card1.id || card.id === card2.id) return { ...card, flipped: false };
+            return card;
           });
           setCardList(newCardList);
         }
-
         setFlippedCards([]);
       }, 1000);
     }
   }, [flippedCards]);
+
+  useEffect(() => {
+    if (isOver) {
+      setIsModalOpen((prev) => !prev);
+    }
+  }, [isOver]);
 
   // 카드 뒤집기
   const flipCard = (id: number) => {
@@ -94,25 +104,6 @@ const Game = () => {
     });
 
     setCardList(newCardList);
-  };
-
-  // 카드 매칭되었는지 확인
-  const isMatchedCard = (first: CardData, second: CardData) => {
-    return first.answer === second.answer;
-  };
-
-  // 카드 매칭 시
-  const handleMatchedCard = (first: CardData, second: CardData) => {
-    const newCardList = cardList.map((card) => {
-      const matchedCard = { ...card };
-      if (isMatchedCard(first, matchedCard) || isMatchedCard(second, matchedCard)) {
-        matchedCard.matched = true;
-      }
-      return matchedCard;
-    });
-    setCardList(newCardList);
-    setScore((prev) => prev + 1);
-    checkGameOver();
   };
 
   // 카드 클릭 시
@@ -141,21 +132,10 @@ const Game = () => {
     });
   };
 
-  useEffect(() => {
-    if (isOver) {
-      setIsModalOpen((prev) => !prev);
-      resetGame();
-      return;
-    }
-  }, [isOver]);
-
-  const checkGameOver = () => {
-    score === mode - 1 ? setIsOver(true) : setIsOver(false);
-  };
-
-  const resetGame = () => {
+  const handleReset = () => {
     setScore(0);
     changeMode(mode);
+    setIsOver(false);
   };
 
   return (
@@ -171,13 +151,19 @@ const Game = () => {
         <button className='modeBtn' type='button' onClick={() => changeMode(HARD_MODE)}>
           HARD
         </button>
-        <button className='resetBtn' type='button' onClick={resetGame}>
+        <button className='resetBtn' type='button' onClick={handleReset}>
           RESET
         </button>
       </StMode>
       <StCards>{displayCards()}</StCards>
       {isModalOpen && (
-        <Modal isModalOpen={isModalOpen} onClose={() => setIsModalOpen((prev) => !prev)}></Modal>
+        <Modal
+          isModalOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen((prev) => !prev);
+            handleReset();
+          }}
+        ></Modal>
       )}
     </GameWrapper>
   );
