@@ -22,6 +22,7 @@ const Game = () => {
     let currentIndex = duplicatedCards.length,
       temporaryValue,
       randomIndex;
+
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
@@ -32,6 +33,7 @@ const Game = () => {
         duplicatedCards[randomIndex] = temporaryValue;
       }
     }
+
     return duplicatedCards;
   };
 
@@ -49,7 +51,7 @@ const Game = () => {
   );
 
   // 뒤집은 카드 리스트
-  const [flippedCardList, setFlippedCardList] = useState<Zzangu[]>([]);
+  const [flippedCards, setFlippedCards] = useState<number[]>([]);
 
   // 카드 뒤집기
   const flipCard = (id: number) => {
@@ -57,8 +59,8 @@ const Game = () => {
       const showCard = { ...card };
       if (showCard.id === id && !showCard.flipped && !showCard.matched) {
         showCard.flipped = true;
-        setFlippedCardList([...flippedCardList, showCard]);
-        console.log(id);
+        setFlippedCards([...flippedCards, id]);
+        console.log(flippedCards);
       }
       return showCard;
     });
@@ -67,12 +69,14 @@ const Game = () => {
   };
 
   // 카드 매칭되었는지 확인
-  const isMatchedCard = (first: Zzangu, second: Zzangu) => {
-    return first.id === second.id;
+  const isMatchedCard = (first: Cards, second: Cards) => {
+    if (first) {
+      return first.id === second.id;
+    } else return null;
   };
 
   // 카드 매칭 시
-  const handleMatchedCard = (first: Zzangu, second: Zzangu) => {
+  const handleMatchedCard = (first: Cards, second: Cards) => {
     const newCardList = cardList.map((card) => {
       const matchedCard = { ...card };
       if (isMatchedCard(first, matchedCard) || isMatchedCard(second, matchedCard)) {
@@ -86,24 +90,38 @@ const Game = () => {
   // 카드 클릭 시
   const handleClick = (id: number) => {
     flipCard(id);
+
     // 두 개의 카드가 뒤집혔을 때
-    if (flippedCardList.length === 1) {
-      const [card1] = flippedCardList;
-      const card2 = cardList.find((card) => card.flipped && !card.matched);
+    if (flippedCards.length === 1) {
+      const [card1Id] = flippedCards;
+      const card1 = cardList.find((card) => card.id === card1Id);
+      const card2 = cardList.find((card) => card.flipped && !card.matched && card.id !== card1Id);
 
       // 두 카드가 매칭된 경우
-      if (card2 && isMatchedCard(card1, card2)) {
-        handleMatchedCard(card1, card2);
+      if (card2 && isMatchedCard(card1!, card2)) {
+        handleMatchedCard(card1!, card2);
         console.log('매칭');
       } else {
         // 두 카드가 매칭되지 않은 경우
         console.log('매칭실패');
+        setTimeout(() => {
+          const newCardList = cardList.map((card) => {
+            const flippedCard = { ...card };
+            if (flippedCard.id === card1Id || flippedCard.id === id) {
+              flippedCard.flipped = false;
+            }
+            return flippedCard;
+          });
+          setCardList(newCardList);
+          setFlippedCards([]);
+        }, 1000);
       }
     } else {
-      //   setFlippedCardList([cardList.find((card) => card.id === id)]);
+      flipCard(id);
+      setFlippedCards([...flippedCards, id]);
     }
   };
-  console.log(cardList);
+
   // 카드 배치하기
   const generateCards = () => {
     return cardList.map((card) => {
@@ -158,7 +176,6 @@ const StMode = styled.nav`
     border-radius: 1.5rem;
     transform-style: preserve-3d;
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1);
-    /* background: 150ms cubic-bezier(0, 0, 0.58, 1); */
 
     &::before {
       position: absolute;
