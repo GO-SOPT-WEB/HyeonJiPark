@@ -8,12 +8,13 @@ interface CardProps {
   src: string;
   alt: string;
   isFlipped: boolean;
+  isMatched: boolean;
   handleClick: (id: number) => void;
 }
 
-const Card = ({ id, src, alt, isFlipped, handleClick }: CardProps) => {
+const Card = ({ id, src, alt, isFlipped, isMatched, handleClick }: CardProps) => {
   return (
-    <StCardWrapper onClick={() => handleClick(id)} isFlipped={isFlipped}>
+    <StCardWrapper onClick={() => handleClick(id)} isFlipped={isFlipped} isMatched={isMatched}>
       {isFlipped ? (
         <img className='cardFront' src={src} alt={alt} />
       ) : (
@@ -25,7 +26,7 @@ const Card = ({ id, src, alt, isFlipped, handleClick }: CardProps) => {
 
 export default Card;
 
-const StCardWrapper = styled.article<{ isFlipped: boolean }>`
+const StCardWrapper = styled.article<{ isFlipped: boolean; isMatched: boolean }>`
   display: flex;
 
   width: 20rem;
@@ -54,5 +55,12 @@ const StCardWrapper = styled.article<{ isFlipped: boolean }>`
     isFlipped &&
     css`
       transform: rotateY(180deg);
+    `}
+
+  ${({ isMatched }) =>
+    isMatched &&
+    css`
+      transform: scale(1.1);
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
     `}
 `;

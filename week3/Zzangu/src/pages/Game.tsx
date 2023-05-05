@@ -207,6 +207,7 @@ const Game = () => {
           src={card.src}
           alt={card.alt}
           isFlipped={card.flipped}
+          isMatched={card.matched}
           handleClick={() => handleClick(card.id)}
         />
       );
