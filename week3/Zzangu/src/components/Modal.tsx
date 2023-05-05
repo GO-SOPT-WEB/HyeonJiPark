@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
 interface ModalProps {
-  //   children: React.ReactNode;
   isModalOpen: boolean;
   onClose: () => void;
 }
@@ -51,7 +50,6 @@ const ModalContainer = styled.div`
   height: 30rem;
   padding: 4rem;
 
-  background-color: #fff;
   border-radius: 2rem;
   background-color: ${({ theme }) => theme.colors.Zzangu_LightPink};
 
@@ -62,22 +60,22 @@ const ModalContainer = styled.div`
 `;
 
 const CloseBtn = styled.button`
-  width: 100%;
-
   padding: 1rem 2rem;
   margin-top: 1rem;
+
+  width: 100%;
 
   color: ${({ theme }) => theme.colors.Zzangu_Blue};
   background-color: white;
   ${({ theme }) => theme.fonts.ZZangu_Score};
-
   border: 0.1rem solid black;
   border-radius: 0.8rem;
+
   box-shadow: 0 0.5rem 0rem 0rem ${({ theme }) => theme.colors.Zzangu_Blue};
   transition: 0.2s;
 
   &:hover {
-    color: white;
+    color: ${({ theme }) => theme.colors.Zzangu_White};
     background-color: ${({ theme }) => theme.colors.Zzangu_Blue};
   }
 `;
