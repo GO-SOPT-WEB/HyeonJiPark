@@ -62,62 +62,20 @@ const Game = () => {
 
   // 선택한 난이도에 따라 카드 배치
   const changeMode = (MODE: number) => {
-    switch (MODE) {
-      case EASY_MODE:
-        setMode(EASY_MODE);
-        setScore(0);
-        setCardList(
-          shuffleCards(questionList.slice(0, EASY_MODE)).map((card: Zzangu, index: number) => {
-            return {
-              id: index,
-              answer: card.id,
-              src: card.src,
-              alt: card.alt,
-              flipped: false,
-              matched: false,
-            };
-          }),
-        );
-        generateCards();
-        break;
-      case NORMAL_MODE:
-        console.log(NORMAL_MODE);
-        setMode(NORMAL_MODE);
-        setScore(0);
-        setCardList(
-          shuffleCards(questionList.slice(0, NORMAL_MODE)).map((card: Zzangu, index: number) => {
-            return {
-              id: index,
-              answer: card.id,
-              src: card.src,
-              alt: card.alt,
-              flipped: false,
-              matched: false,
-            };
-          }),
-        );
-        generateCards();
-        break;
-      case HARD_MODE:
-        setMode(HARD_MODE);
-        setScore(0);
-        setCardList(
-          shuffleCards(questionList.slice(0, HARD_MODE)).map((card: Zzangu, index: number) => {
-            return {
-              id: index,
-              answer: card.id,
-              src: card.src,
-              alt: card.alt,
-              flipped: false,
-              matched: false,
-            };
-          }),
-        );
-        generateCards();
-        break;
-      default:
-        break;
-    }
+    setScore(0);
+    setCardList(
+      shuffleCards(questionList.slice(0, MODE)).map((card: Zzangu, index: number) => {
+        return {
+          id: index,
+          answer: card.id,
+          src: card.src,
+          alt: card.alt,
+          flipped: false,
+          matched: false,
+        };
+      }),
+    );
+    generateCards();
   };
 
   // 뒤집은 카드 리스트
