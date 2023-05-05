@@ -10,10 +10,13 @@ const Header = ({ mode, score }: HeaderProps) => {
   return (
     <StHeader>
       <h1>짱구는 못말려!</h1>
-      <p>점수</p>
-      <p>
-        {score} / {mode}
-      </p>
+
+      <StScore>
+        <p>점수</p>
+        <p>
+          {score} / {mode}
+        </p>
+      </StScore>
     </StHeader>
   );
 };
@@ -27,14 +30,31 @@ const StHeader = styled.header`
   align-items: center;
   gap: 2rem;
 
-  height: 13rem;
-
+  padding: 4rem 0rem;
   background-color: ${({ theme }) => theme.colors.Zzangu_DarkPink};
 
   & > h1 {
-    ${({ theme }) => theme.fonts.ZZangu_Pretendard_Bold_35};
+    color: ${({ theme }) => theme.colors.Zzangu_Red};
+    ${({ theme }) => theme.fonts.ZZangu_Title};
   }
+`;
+
+const StScore = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  right: 11%;
+
+  padding: 0.5rem 5rem;
+
+  border-radius: 3rem;
+  background-color: ${({ theme }) => theme.colors.Zzangu_Yellow};
+
   & > p {
-    ${({ theme }) => theme.fonts.ZZangu_Pretendard_Semibold_20};
+    ${({ theme }) => theme.fonts.ZZangu_Score};
+    color: ${({ theme }) => theme.colors.Zzangu_Red};
   }
 `;

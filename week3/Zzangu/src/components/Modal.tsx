@@ -15,7 +15,8 @@ const Modal = ({ isModalOpen, onClose }: ModalProps) => {
     <>
       <ModalBackground onClick={onClose} />
       <ModalContainer>
-        🎉 게임 끝!! 축하합니당 🎉
+        <p>🎉 게임 끝!! 🎉</p>
+        <p>축하합니당</p>
         <CloseBtn onClick={onClose}>게임으로 돌아가기</CloseBtn>
       </ModalContainer>
     </>,
@@ -39,36 +40,45 @@ const ModalContainer = styled.div`
   justify-content: space-between;
   z-index: 1000;
   text-align: center;
+  gap: 1rem;
 
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 30rem;
-  height: 20rem;
+  width: 40rem;
+  height: 30rem;
   padding: 4rem;
 
   background-color: #fff;
-  ${({ theme }) => theme.fonts.ZZangu_Pretendard_Medium_16};
   border-radius: 2rem;
+  background-color: ${({ theme }) => theme.colors.Zzangu_LightPink};
+
+  & > p {
+    color: ${({ theme }) => theme.colors.Zzangu_Red};
+    ${({ theme }) => theme.fonts.ZZangu_Title};
+  }
 `;
 
 const CloseBtn = styled.button`
-  padding: 0rem 2rem;
-
   width: 100%;
-  height: 3rem;
 
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+
+  color: ${({ theme }) => theme.colors.Zzangu_Blue};
   background-color: white;
+  ${({ theme }) => theme.fonts.ZZangu_Score};
+
   border: 0.1rem solid black;
   border-radius: 0.8rem;
-  box-shadow: 0 0.5rem 0rem 0rem #3b82f6;
+  box-shadow: 0 0.5rem 0rem 0rem ${({ theme }) => theme.colors.Zzangu_Blue};
   transition: 0.2s;
 
   &:hover {
     color: white;
-    background-color: #3b82f6;
+    background-color: ${({ theme }) => theme.colors.Zzangu_Blue};
   }
 `;
 

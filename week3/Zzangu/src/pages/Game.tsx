@@ -3,19 +3,16 @@ import styled from 'styled-components';
 
 import Header from '../components/Header';
 import Card from '../components/Card';
-import ZZANGU_LIST from '../datas/zzanguList';
-import { Zzangu } from '../datas/zzanguList';
+import ZZANGU_LIST from '../constants/zzanguList';
+import { Zzangu } from '../constants/zzanguList';
 import Modal from '../components/Modal';
+import { EASY_MODE, NORMAL_MODE, HARD_MODE } from '../constants/mode';
 
 interface Cards extends Zzangu {
   answer: number;
   flipped: boolean;
   matched: boolean;
 }
-
-const EASY_MODE = 3;
-const NORMAL_MODE = 7;
-const HARD_MODE = 9;
 
 const Game = () => {
   const [mode, setMode] = useState(EASY_MODE);
@@ -327,7 +324,7 @@ const StMode = styled.nav`
     z-index: 10;
     padding: 1rem 4rem;
 
-    color: ${({ theme }) => theme.colors.Zzangu_Black};
+    color: ${({ theme }) => theme.colors.Zzangu_YellowBorder};
     background: ${({ theme }) => theme.colors.Zzangu_Yellow};
     ${({ theme }) => theme.fonts.ZZangu_Pretendard_Semibold_20};
     border: 0.3rem solid ${({ theme }) => theme.colors.Zzangu_YellowBorder};

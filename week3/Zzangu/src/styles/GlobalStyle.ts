@@ -143,6 +143,20 @@ export const reset = css`
 export const GlobalStyle = createGlobalStyle`
 ${reset}
 
+@font-face {
+font-family: 'UhBeeSe_hyun';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 #root, body, html {
     height: 100vh;
     margin: 0 auto;
