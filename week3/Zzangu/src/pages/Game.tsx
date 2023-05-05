@@ -21,6 +21,45 @@ const Game = () => {
   const [mode, setMode] = useState(EASY_MODE);
   const [score, setScore] = useState(0);
   const [isOver, setIsOver] = useState(false);
+  const [questionList, setQuestionList] = useState(ZZANGU_LIST);
+
+  // 카드 섞기
+  const shuffleCards = (card: Zzangu[]) => {
+    const duplicatedCards = [...card, ...card];
+    duplicatedCards.sort(() => Math.random() - 0.5);
+    return duplicatedCards;
+  };
+
+  useEffect(() => {
+    setQuestionList((prev) => [...prev].sort(() => Math.random() - 0.5));
+    setCardList(
+      shuffleCards(questionList.slice(0, EASY_MODE)).map((card: Zzangu, index: number) => {
+        return {
+          id: index,
+          answer: card.id,
+          src: card.src,
+          alt: card.alt,
+          flipped: false,
+          matched: false,
+        };
+      }),
+    );
+  }, [mode]);
+  console.log(questionList);
+
+  // 섞은 카드 리스트
+  const [cardList, setCardList] = useState<Cards[]>(
+    shuffleCards(questionList.slice(0, EASY_MODE)).map((card: Zzangu, index: number) => {
+      return {
+        id: index,
+        answer: card.id,
+        src: card.src,
+        alt: card.alt,
+        flipped: false,
+        matched: false,
+      };
+    }),
+  );
 
   // 선택한 난이도에 따라 카드 배치
   const changeMode = (MODE: number) => {
@@ -29,7 +68,7 @@ const Game = () => {
         setMode(EASY_MODE);
         setScore(0);
         setCardList(
-          shuffleCards(ZZANGU_LIST.slice(0, EASY_MODE)).map((card: Zzangu, index: number) => {
+          shuffleCards(questionList.slice(0, EASY_MODE)).map((card: Zzangu, index: number) => {
             return {
               id: index,
               answer: card.id,
@@ -46,7 +85,7 @@ const Game = () => {
         setMode(NORMAL_MODE);
         setScore(0);
         setCardList(
-          shuffleCards(ZZANGU_LIST.slice(0, NORMAL_MODE)).map((card: Zzangu, index: number) => {
+          shuffleCards(questionList.slice(0, NORMAL_MODE)).map((card: Zzangu, index: number) => {
             return {
               id: index,
               answer: card.id,
@@ -63,7 +102,7 @@ const Game = () => {
         setMode(HARD_MODE);
         setScore(0);
         setCardList(
-          shuffleCards(ZZANGU_LIST.slice(0, HARD_MODE)).map((card: Zzangu, index: number) => {
+          shuffleCards(questionList.slice(0, HARD_MODE)).map((card: Zzangu, index: number) => {
             return {
               id: index,
               answer: card.id,
@@ -80,27 +119,6 @@ const Game = () => {
         break;
     }
   };
-
-  // 카드 섞기
-  const shuffleCards = (card: Zzangu[]) => {
-    const duplicatedCards = [...card, ...card];
-    duplicatedCards.sort(() => Math.random() - 0.5);
-    return duplicatedCards;
-  };
-
-  // 섞은 카드 리스트
-  const [cardList, setCardList] = useState<Cards[]>(
-    shuffleCards(ZZANGU_LIST.slice(0, EASY_MODE)).map((card: Zzangu, index: number) => {
-      return {
-        id: index,
-        answer: card.id,
-        src: card.src,
-        alt: card.alt,
-        flipped: false,
-        matched: false,
-      };
-    }),
-  );
 
   // 뒤집은 카드 리스트
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
