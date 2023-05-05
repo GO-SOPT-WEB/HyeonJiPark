@@ -27,6 +27,7 @@ const Game = () => {
     switch (MODE) {
       case EASY_MODE:
         setMode(EASY_MODE);
+        setScore(0);
         setCardList(
           shuffleCards(ZZANGU_LIST.slice(0, EASY_MODE)).map((card: Zzangu, index: number) => {
             return {
@@ -43,6 +44,7 @@ const Game = () => {
         break;
       case NORMAL_MODE:
         setMode(NORMAL_MODE);
+        setScore(0);
         setCardList(
           shuffleCards(ZZANGU_LIST.slice(0, NORMAL_MODE)).map((card: Zzangu, index: number) => {
             return {
@@ -59,6 +61,7 @@ const Game = () => {
         break;
       case HARD_MODE:
         setMode(HARD_MODE);
+        setScore(0);
         setCardList(
           shuffleCards(ZZANGU_LIST.slice(0, HARD_MODE)).map((card: Zzangu, index: number) => {
             return {
