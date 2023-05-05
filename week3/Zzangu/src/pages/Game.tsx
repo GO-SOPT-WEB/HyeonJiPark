@@ -166,6 +166,7 @@ const Game = () => {
 export default Game;
 
 const GameWrapper = styled.section`
+  position: absolute;
   height: fit-content;
   background-color: ${({ theme }) => theme.colors.Zzangu_SkyBlue};
 `;
