@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import Header from '../components/Header';
@@ -8,13 +8,21 @@ import { Zzangu } from '../datas/zzanguList';
 
 interface Cards {
   id: number;
+  answer: number;
   src: string;
   alt: string;
   flipped: boolean;
   matched: boolean;
 }
 
+const EASY = 5;
+const NORMAL = 7;
+const HARD = 9;
+
 const Game = () => {
+  // 난이도 선택
+  const changeMode = () => {};
+
   // 카드 섞기
   const shuffleCards = (card: Zzangu[]) => {
     const duplicatedCards = [...card, ...card];
@@ -42,6 +50,7 @@ const Game = () => {
     shuffleCards(ZZANGU_LIST).map((card: Zzangu, index: number) => {
       return {
         id: index,
+        answer: card.id,
         src: card.src,
         alt: card.alt,
         flipped: false,
@@ -53,14 +62,46 @@ const Game = () => {
   // 뒤집은 카드 리스트
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
 
+  useEffect(() => {
+    // 두 개의 카드가 뒤집혔을 때
+    if (flippedCards.length === 2) {
+      console.log(flippedCards, '두개 뒤집힘');
+
+      // 두 개의 카드가 뒤집힌 후에 두 번째 카드를 찾음
+      setTimeout(() => {
+        const card1 = cardList[flippedCards[0]];
+        const card2 = cardList[flippedCards[1]];
+
+        // 두 번째 카드가 매칭된 경우
+        if (card2 && isMatchedCard(card1, card2)) {
+          handleMatchedCard(card1, card2);
+        } else {
+          // 두 번째 카드가 매칭되지 않은 경우
+          const newCardList = cardList.map((card) => {
+            const flippedCard = { ...card };
+            if (flippedCard.id === flippedCards[0] || flippedCard.id === flippedCards[1]) {
+              flippedCard.flipped = false;
+            }
+            return flippedCard;
+          });
+          setCardList(newCardList);
+        }
+
+        setFlippedCards([]);
+      }, 1000);
+    }
+  }, [flippedCards]);
+
   // 카드 뒤집기
   const flipCard = (id: number) => {
+    console.log(id);
+    setFlippedCards([...flippedCards, id]);
+
     const newCardList = cardList.map((card) => {
       const showCard = { ...card };
       if (showCard.id === id && !showCard.flipped && !showCard.matched) {
         showCard.flipped = true;
-        setFlippedCards([...flippedCards, id]);
-        console.log(flippedCards);
+        // setFlippedCards([...flippedCards, id]);
       }
       return showCard;
     });
@@ -70,8 +111,11 @@ const Game = () => {
 
   // 카드 매칭되었는지 확인
   const isMatchedCard = (first: Cards, second: Cards) => {
+    console.log('매칭 확인');
     if (first) {
-      return first.id === second.id;
+      console.log('first', first.answer);
+      console.log('second', second.answer);
+      return first.answer === second.answer;
     } else return null;
   };
 
@@ -89,41 +133,18 @@ const Game = () => {
 
   // 카드 클릭 시
   const handleClick = (id: number) => {
-    flipCard(id);
-
-    // 두 개의 카드가 뒤집혔을 때
-    if (flippedCards.length === 1) {
-      const [card1Id] = flippedCards;
-      const card1 = cardList.find((card) => card.id === card1Id);
-      const card2 = cardList.find((card) => card.flipped && !card.matched && card.id !== card1Id);
-
-      // 두 카드가 매칭된 경우
-      if (card2 && isMatchedCard(card1!, card2)) {
-        handleMatchedCard(card1!, card2);
-        console.log('매칭');
-      } else {
-        // 두 카드가 매칭되지 않은 경우
-        console.log('매칭실패');
-        setTimeout(() => {
-          const newCardList = cardList.map((card) => {
-            const flippedCard = { ...card };
-            if (flippedCard.id === card1Id || flippedCard.id === id) {
-              flippedCard.flipped = false;
-            }
-            return flippedCard;
-          });
-          setCardList(newCardList);
-          setFlippedCards([]);
-        }, 1000);
-      }
-    } else {
-      flipCard(id);
-      setFlippedCards([...flippedCards, id]);
+    // 2개까지만 클릭 가능
+    if (flippedCards.length === 2) {
+      return;
     }
+
+    // 카드 뒤집기
+    flipCard(id);
   };
 
   // 카드 배치하기
   const generateCards = () => {
+    console.log(cardList);
     return cardList.map((card) => {
       return (
         <Card
