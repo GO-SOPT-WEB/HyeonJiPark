@@ -3,16 +3,18 @@ import styled from 'styled-components';
 
 import Header from '../components/Header';
 import Card from '../components/Card';
-import ZZANGU_LIST from '../constants/zzanguList';
-import { Zzangu } from '../constants/zzanguList';
+import ZZANGU_LIST from '../datas/zzanguList';
+import { Zzangu } from '../datas/zzanguList';
 import Modal from '../components/Modal';
-import { EASY_MODE, NORMAL_MODE, HARD_MODE } from '../constants/mode';
 
 interface Cards extends Zzangu {
   answer: number;
   flipped: boolean;
   matched: boolean;
 }
+export const EASY_MODE = 5;
+export const NORMAL_MODE = 7;
+export const HARD_MODE = 9;
 
 const Game = () => {
   const [mode, setMode] = useState(EASY_MODE);
@@ -43,7 +45,6 @@ const Game = () => {
       }),
     );
   }, [mode]);
-  console.log(questionList);
 
   // 섞은 카드 리스트
   const [cardList, setCardList] = useState<Cards[]>(
@@ -80,6 +81,7 @@ const Game = () => {
         generateCards();
         break;
       case NORMAL_MODE:
+        console.log(NORMAL_MODE);
         setMode(NORMAL_MODE);
         setScore(0);
         setCardList(
