@@ -7,79 +7,57 @@ import ZZANGU_LIST from '../datas/zzanguList';
 import { Zzangu } from '../datas/zzanguList';
 import Modal from '../components/Modal';
 
-interface Cards extends Zzangu {
+interface CardData extends Zzangu {
   answer: number;
   flipped: boolean;
   matched: boolean;
 }
-export const EASY_MODE = 5;
-export const NORMAL_MODE = 7;
-export const HARD_MODE = 9;
+
+const EASY_MODE = 5;
+const NORMAL_MODE = 7;
+const HARD_MODE = 9;
+
+// 출제할 카드 섞기
+const shuffleCards = (cards: Zzangu[]): Zzangu[] => {
+  const duplicatedCards = [...cards, ...cards];
+  duplicatedCards.sort(() => Math.random() - 0.5);
+  return duplicatedCards;
+};
+
+// 모드별 카드 생성
+const createCards = (cards: Zzangu[], mode: number): CardData[] => {
+  return shuffleCards(cards.slice(0, mode)).map((card, index) => ({
+    id: index,
+    answer: card.id,
+    src: card.src,
+    alt: card.alt,
+    flipped: false,
+    matched: false,
+  }));
+};
 
 const Game = () => {
   const [mode, setMode] = useState(EASY_MODE);
   const [score, setScore] = useState(0);
-  const [questionList, setQuestionList] = useState(ZZANGU_LIST);
   const [isOver, setIsOver] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // 카드 섞기
-  const shuffleCards = (card: Zzangu[]) => {
-    const duplicatedCards = [...card, ...card];
-    duplicatedCards.sort(() => Math.random() - 0.5);
-    return duplicatedCards;
-  };
+  const [questionList, setQuestionList] = useState<Zzangu[]>(ZZANGU_LIST);
+  const [cardList, setCardList] = useState<CardData[]>(createCards(questionList, EASY_MODE));
+  const [flippedCards, setFlippedCards] = useState<number[]>([]);
 
+  // 모드를 변경할 때마다 카드 섞기
   useEffect(() => {
-    setQuestionList((prev) => [...prev].sort(() => Math.random() - 0.5));
-    setCardList(
-      shuffleCards(questionList.slice(0, EASY_MODE)).map((card: Zzangu, index: number) => {
-        return {
-          id: index,
-          answer: card.id,
-          src: card.src,
-          alt: card.alt,
-          flipped: false,
-          matched: false,
-        };
-      }),
-    );
+    createCards(questionList, mode);
   }, [mode]);
 
-  // 섞은 카드 리스트
-  const [cardList, setCardList] = useState<Cards[]>(
-    shuffleCards(questionList.slice(0, EASY_MODE)).map((card: Zzangu, index: number) => {
-      return {
-        id: index,
-        answer: card.id,
-        src: card.src,
-        alt: card.alt,
-        flipped: false,
-        matched: false,
-      };
-    }),
-  );
-
   // 선택한 난이도에 따라 카드 배치
-  const changeMode = (MODE: number) => {
+  const changeMode = (mode: number) => {
     setScore(0);
-    setCardList(
-      shuffleCards(questionList.slice(0, MODE)).map((card: Zzangu, index: number) => {
-        return {
-          id: index,
-          answer: card.id,
-          src: card.src,
-          alt: card.alt,
-          flipped: false,
-          matched: false,
-        };
-      }),
-    );
-    generateCards();
+    setMode(mode);
+    setCardList(createCards(questionList, mode));
+    displayCards();
   };
-
-  // 뒤집은 카드 리스트
-  const [flippedCards, setFlippedCards] = useState<number[]>([]);
 
   useEffect(() => {
     // 두 개의 카드가 뒤집혔을 때
@@ -125,12 +103,12 @@ const Game = () => {
   };
 
   // 카드 매칭되었는지 확인
-  const isMatchedCard = (first: Cards, second: Cards) => {
+  const isMatchedCard = (first: CardData, second: CardData) => {
     return first.answer === second.answer;
   };
 
   // 카드 매칭 시
-  const handleMatchedCard = (first: Cards, second: Cards) => {
+  const handleMatchedCard = (first: CardData, second: CardData) => {
     const newCardList = cardList.map((card) => {
       const matchedCard = { ...card };
       if (isMatchedCard(first, matchedCard) || isMatchedCard(second, matchedCard)) {
@@ -153,7 +131,7 @@ const Game = () => {
   };
 
   // 카드 배치하기
-  const generateCards = () => {
+  const displayCards = () => {
     return cardList.map((card) => {
       return (
         <Card
@@ -203,7 +181,7 @@ const Game = () => {
           RESET
         </button>
       </StMode>
-      <StCards>{generateCards()}</StCards>
+      <StCards>{displayCards()}</StCards>
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} onClose={() => setIsModalOpen((prev) => !prev)}></Modal>
       )}
