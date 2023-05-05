@@ -9,12 +9,12 @@ interface CardProps {
   alt: string;
   isFlipped: boolean;
   isMatched: boolean;
-  handleClick: (id: number) => void;
+  handleFlip: (id: number) => void;
 }
 
-const Card = ({ id, src, alt, isFlipped, isMatched, handleClick }: CardProps) => {
+const Card = ({ id, src, alt, isFlipped, isMatched, handleFlip }: CardProps) => {
   return (
-    <StCardWrapper onClick={() => handleClick(id)} isFlipped={isFlipped} isMatched={isMatched}>
+    <StCardWrapper onClick={() => handleFlip(id)} isFlipped={isFlipped} isMatched={isMatched}>
       {isFlipped ? (
         <img className='cardFront' src={src} alt={alt} />
       ) : (

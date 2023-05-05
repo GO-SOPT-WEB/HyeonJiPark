@@ -92,41 +92,35 @@ const Game = () => {
   }, [isOver]);
 
   // 카드 뒤집기
-  const flipCard = (id: number) => {
-    setFlippedCards([...flippedCards, id]);
-
-    const newCardList = cardList.map((card) => {
-      const showCard = { ...card };
-      if (showCard.id === id && !showCard.flipped && !showCard.matched) {
-        showCard.flipped = true;
-      }
-      return showCard;
-    });
-
-    setCardList(newCardList);
-  };
-
-  // 카드 클릭 시
-  const handleClick = (id: number) => {
-    // 2개까지만 클릭 가능
+  const handleFlip = (id: number) => {
+    // 2개까지만 뒤집기 가능
     if (flippedCards.length === 2) {
       return;
     }
-    flipCard(id);
+
+    const newCardList = cardList.map((card) => {
+      if (card.id === id && !card.flipped && !card.matched) {
+        return { ...card, flipped: true };
+      }
+      return card;
+    });
+
+    setCardList(newCardList);
+    setFlippedCards([...flippedCards, id]);
   };
 
   // 카드 배치하기
   const displayCards = () => {
-    return cardList.map((card) => {
+    return cardList.map(({ id, src, alt, flipped, matched }: CardData) => {
       return (
         <Card
-          key={card.id}
-          id={card.id}
-          src={card.src}
-          alt={card.alt}
-          isFlipped={card.flipped}
-          isMatched={card.matched}
-          handleClick={() => handleClick(card.id)}
+          key={id}
+          id={id}
+          src={src}
+          alt={alt}
+          isFlipped={flipped}
+          isMatched={matched}
+          handleFlip={() => handleFlip(id)}
         />
       );
     });
