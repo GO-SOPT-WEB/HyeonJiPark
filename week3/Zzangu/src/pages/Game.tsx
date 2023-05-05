@@ -84,22 +84,7 @@ const Game = () => {
   // 카드 섞기
   const shuffleCards = (card: Zzangu[]) => {
     const duplicatedCards = [...card, ...card];
-
-    // let currentIndex = duplicatedCards.length,
-    //   temporaryValue,
-    //   randomIndex;
-
-    // while (0 !== currentIndex) {
-    //   randomIndex = Math.floor(Math.random() * currentIndex);
-    //   currentIndex -= 1;
-    //   temporaryValue = card[currentIndex];
-
-    //   if (temporaryValue) {
-    //     duplicatedCards[currentIndex] = duplicatedCards[randomIndex];
-    //     duplicatedCards[randomIndex] = temporaryValue;
-    //   }
-    // }
-
+    duplicatedCards.sort(() => Math.random() - 0.5);
     return duplicatedCards;
   };
 
