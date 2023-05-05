@@ -13,7 +13,7 @@ interface CardData extends Zzangu {
   matched: boolean;
 }
 
-const EASY_MODE = 2;
+const EASY_MODE = 5;
 const NORMAL_MODE = 7;
 const HARD_MODE = 9;
 
