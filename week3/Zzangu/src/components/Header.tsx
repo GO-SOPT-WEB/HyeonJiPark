@@ -1,11 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = () => {
+interface HeaderProps {
+  mode: number;
+  score: number;
+}
+
+const Header = ({ mode, score }: HeaderProps) => {
   return (
     <StHeader>
       <h1>짱구는 못말려!</h1>
       <p>점수</p>
+      <p>
+        {score} / {mode}
+      </p>
       <button type='button'>Reset</button>
     </StHeader>
   );

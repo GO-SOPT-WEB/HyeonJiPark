@@ -15,13 +15,35 @@ interface Cards {
   matched: boolean;
 }
 
-const EASY = 5;
-const NORMAL = 7;
-const HARD = 9;
+const EASY_MODE = 5;
+const NORMAL_MODE = 7;
+const HARD_MODE = 9;
 
 const Game = () => {
+  // 게임 모드(난이도)
+  const [mode, setMode] = useState(EASY_MODE);
+  const [score, setScore] = useState(0);
+
   // 난이도 선택
-  const changeMode = () => {};
+  const changeMode = (MODE: string) => {
+    switch (MODE) {
+      case 'EASY':
+        setMode(EASY_MODE);
+        break;
+      case 'NORMAL':
+        setMode(NORMAL_MODE);
+        break;
+      case 'HARD':
+        setMode(HARD_MODE);
+        break;
+      default:
+        break;
+    }
+  };
+
+  // useEffect(() => {
+
+  // }, [mode, score]);
 
   // 카드 섞기
   const shuffleCards = (card: Zzangu[]) => {
@@ -129,6 +151,7 @@ const Game = () => {
       return matchedCard;
     });
     setCardList(newCardList);
+    setScore((prev) => prev + 1);
   };
 
   // 카드 클릭 시
@@ -161,11 +184,17 @@ const Game = () => {
 
   return (
     <GameWrapper>
-      <Header />
+      <Header mode={mode} score={score} />
       <StMode>
-        <button type='button'>Easy</button>
-        <button type='button'>Normal</button>
-        <button type='button'>Hard</button>
+        <button type='button' onClick={() => changeMode('EASY')}>
+          EASY
+        </button>
+        <button type='button' onClick={() => changeMode('NORMAL')}>
+          NORMAL
+        </button>
+        <button type='button' onClick={() => changeMode('HARD')}>
+          HARD
+        </button>
       </StMode>
       <StCards>{generateCards()}</StCards>
     </GameWrapper>
