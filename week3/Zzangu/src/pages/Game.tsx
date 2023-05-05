@@ -13,7 +13,7 @@ interface CardData extends Zzangu {
   matched: boolean;
 }
 
-const EASY_MODE = 5;
+const EASY_MODE = 2;
 const NORMAL_MODE = 7;
 const HARD_MODE = 9;
 
@@ -26,6 +26,7 @@ const shuffleCards = (cards: Zzangu[]): Zzangu[] => {
 
 // 모드별 카드 생성
 const createCards = (cards: Zzangu[], mode: number): CardData[] => {
+  cards.sort(() => Math.random() - 0.5);
   return shuffleCards(cards.slice(0, mode)).map((card, index) => ({
     id: index,
     answer: card.id,
@@ -42,27 +43,20 @@ const Game = () => {
   const [isOver, setIsOver] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [questionList, setQuestionList] = useState<Zzangu[]>(ZZANGU_LIST);
-  const [cardList, setCardList] = useState<CardData[]>(createCards(questionList, EASY_MODE));
+  const [cardList, setCardList] = useState<CardData[]>(createCards(ZZANGU_LIST, EASY_MODE));
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
 
-  // 모드를 변경할 때마다 카드 섞기
-  useEffect(() => {
-    createCards(questionList, mode);
-  }, [mode]);
-
-  // 선택한 난이도에 따라 카드 배치
+  // 모드 변경
   const changeMode = (mode: number) => {
     setScore(0);
     setMode(mode);
-    setCardList(createCards(questionList, mode));
+    setCardList(createCards(ZZANGU_LIST, mode));
     displayCards();
   };
 
   useEffect(() => {
     // 두 개의 카드가 뒤집혔을 때
     if (flippedCards.length === 2) {
-      // 두 개의 카드가 뒤집힌 후에 두 번째 카드를 찾음
       setTimeout(() => {
         const card1 = cardList[flippedCards[0]];
         const card2 = cardList[flippedCards[1]];
