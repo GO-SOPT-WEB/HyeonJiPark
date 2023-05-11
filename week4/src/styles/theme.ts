@@ -3,6 +3,7 @@ import { css, DefaultTheme } from 'styled-components';
 const colors = {
   Weather_Background: '#F8F8FF',
   Weather_Main: '#94A1FF',
+  Weather_White: '#ffffff',
   Weather_Sky: '#a8ecfd',
   Weather_Cloud: '#80aff1',
   Weather_Rain: '#003b71',
@@ -14,13 +15,13 @@ const fonts = {
     font-size: 2.5rem;
     font-weight: 900;
     font-style: normal;
-    line-height: 4.177rem;
+    line-height: 4rem;
   `,
 
-  Pretendard_SubTitle: css`
+  Pretendard_Search: css`
     font-family: 'Pretendard-Regular';
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 100;
     font-style: normal;
     line-height: 3rem;
   `,
