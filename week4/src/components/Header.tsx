@@ -2,11 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Header = () => {
-  return <St.HeaderWrapper>헤더 컴포넌트</St.HeaderWrapper>;
+  return <St.HeaderWrapper>Weather Forecast</St.HeaderWrapper>;
 };
 
 export default Header;
 
 const St = {
-  HeaderWrapper: styled.header``,
+  HeaderWrapper: styled.header`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `,
 };
