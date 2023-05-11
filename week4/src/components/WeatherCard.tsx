@@ -5,7 +5,7 @@ const WeatherCard = () => {
   return (
     <St.WeatherCardWrapper>
       <p>날짜</p>
-      <p>사진</p>
+      <img src='' alt='' />
       <p>온도</p>
       <span>최고</span>
       <span>최고</span>
