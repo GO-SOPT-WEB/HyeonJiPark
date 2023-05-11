@@ -10,7 +10,11 @@ export default Header;
 const St = {
   HeaderWrapper: styled.header`
     display: flex;
-    justify-content: center;
     align-items: center;
+
+    padding: 2rem 5rem;
+
+    color: ${({ theme }) => theme.colors.Weather_Main};
+    ${({ theme }) => theme.fonts.Pretendard_Title};
   `,
 };
