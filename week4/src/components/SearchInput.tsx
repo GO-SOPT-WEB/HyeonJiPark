@@ -38,8 +38,8 @@ const SearchInput = () => {
           onChange={handleChange}
           ref={inputRef}
         />
+        <button type='submit'>검색</button>
       </form>
-      <button type='button'>검색</button>
     </St.SearchInputWrapper>
   );
 };
@@ -64,6 +64,7 @@ const St = {
       height: 5rem;
 
       padding-left: 3rem;
+      margin-right: 1rem;
 
       ${({ theme }) => theme.fonts.Pretendard_Search};
 
@@ -73,7 +74,7 @@ const St = {
       outline: none;
     }
 
-    & > button {
+    & > form > button {
       padding: 1rem 2rem;
 
       ${({ theme }) => theme.fonts.Pretendard_Search};

@@ -2,7 +2,6 @@ import { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SearchPage from './pages/SearchPage';
 import ResultPage from './pages/SearchResult/ResultPage';
-import SearchInput from './components/SearchInput';
 
 const Router = () => {
   return (
