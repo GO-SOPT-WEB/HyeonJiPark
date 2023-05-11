@@ -5,8 +5,8 @@ import WeatherCard from '../../components/WeatherCard';
 import { WeatherInfo } from '../../types/weatherInfo';
 
 const ResultPage = () => {
-  const { currentSearchInput } = useParams() as { currentSearchInput: string };
-  const { dailyWeatherInfo, isLoading, isError } = useGetDailyWeather(currentSearchInput);
+  const { location } = useParams() as { location: string };
+  const { dailyWeatherInfo, isLoading, isError } = useGetDailyWeather(location);
 
   if (isLoading) return null;
   if (isError) return null;
