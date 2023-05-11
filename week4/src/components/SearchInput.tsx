@@ -1,13 +1,44 @@
-import React from 'react';
+import React, { useState, useMemo, ChangeEvent, useRef, useEffect } from 'react';
 import { styled } from 'styled-components';
 
 import { IcLocation } from '../assets/icons';
+import { useNavigate } from 'react-router-dom';
 
 const SearchInput = () => {
+  const [input, setInput] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    inputRef?.current?.focus();
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (input === '') {
+      alert('지역을 입력하세요');
+    } else {
+      navigate(`/${input}`);
+    }
+    setInput('');
+  };
+
   return (
     <St.SearchInputWrapper>
       <img src={IcLocation} alt='location' />
-      <input type='search' id='' name='' placeholder='Search Location' value='' />
+      <form onSubmit={handleSubmit}>
+        <input
+          type='search'
+          placeholder='Search Location'
+          value={input}
+          onChange={handleChange}
+          ref={inputRef}
+        />
+      </form>
       <button type='button'>검색</button>
     </St.SearchInputWrapper>
   );
@@ -28,7 +59,7 @@ const St = {
       width: 4rem;
     }
 
-    & > input {
+    & > form > input {
       width: 50rem;
       height: 5rem;
 

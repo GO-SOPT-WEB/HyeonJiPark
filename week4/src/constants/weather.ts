@@ -9,13 +9,9 @@ import {
   IcSnow,
   IcThunder,
 } from '../assets/icons';
+import { weatherType } from '../types/weatherInfo';
 
-export interface weather {
-  description: string;
-  imgURL: string;
-}
-
-export const WEATHER_TYPE: weather[] = [
+export const WEATHER_TYPE: weatherType[] = [
   {
     description: 'clear sky',
     imgURL: IcClear,
