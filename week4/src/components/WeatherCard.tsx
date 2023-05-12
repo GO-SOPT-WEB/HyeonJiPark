@@ -43,10 +43,11 @@ const St = {
     display: flex;
     flex-direction: column;
 
-    width: 30rem;
+    width: 25rem;
     height: 40rem;
 
     background-color: ${({ theme }) => theme.colors.Weather_Main};
+    border-radius: 1rem;
 
     & > img {
       width: 15rem;
