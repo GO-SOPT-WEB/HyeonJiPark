@@ -8,3 +8,4 @@ export { default as IcRain1 } from './ic_rain_1.svg';
 export { default as IcRain2 } from './ic_rain_2.svg';
 export { default as IcSnow } from './ic_snow.svg';
 export { default as IcThunder } from './ic_thunder.svg';
+export { default as IcError } from './ic_error.svg';

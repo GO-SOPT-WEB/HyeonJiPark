@@ -1,11 +1,14 @@
 import React from 'react';
+import { styled } from 'styled-components';
+
 import { useParams } from 'react-router-dom';
 import { useGetDailyWeather, useGetWeeklyWeather } from '../../hooks/useGetWeather';
-import WeatherCard from '../../components/WeatherCard';
 import { GetFiveDayWeatherInfo, WeatherInfo } from '../../types/weatherInfo';
 import { IcLocation } from '../../assets/icons';
-import { styled } from 'styled-components';
+
+import WeatherCard from '../../components/WeatherCard';
 import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 
 type ResultData = {
   dailyWeatherInfo?: WeatherInfo;
@@ -25,7 +28,7 @@ const ResultPage = () => {
     fiveDayWeather = weeklyWeatherInfo.list.filter((_, index) => index % 8 === 0);
   }
 
-  if (isError) return null;
+  if (isError) return <Error />;
 
   return (
     <St.ResultWrapper>
