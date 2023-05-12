@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 const SearchInput = () => {
   const [input, setInput] = useState('');
+  const [isFocus, setIsFocus] = useState(false);
   const [forecastType, setForecastType] = useState('daily');
 
-  let historyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isFocus, setIsFocus] = useState(false);
+  let historyRef = useRef<HTMLDivElement>(null);
   const [historyList, setHistoryList] = useState<string[]>(
     JSON.parse(localStorage.getItem('history') || '[]'),
   ); // 검색 히스토리 저장
@@ -135,7 +135,6 @@ const St = {
       margin-right: 1rem;
 
       font-family: ${({ theme }) => theme.fonts.Pretendard_Search};
-
       border: 0.1rem solid ${({ theme }) => theme.colors.Weather_Main};
       border-radius: 3rem;
 
@@ -145,9 +144,9 @@ const St = {
     & > button {
       padding: 1rem 2rem;
 
-      font-family: ${({ theme }) => theme.fonts.Pretendard_Search};
       color: ${({ theme }) => theme.colors.Weather_White};
       background-color: ${({ theme }) => theme.colors.Weather_Main};
+      font-family: ${({ theme }) => theme.fonts.Pretendard_Search};
       border-radius: 1.5rem;
     }
   `,
@@ -157,9 +156,9 @@ const St = {
 
     padding: 0.5rem 2rem;
 
+    font-family: ${({ theme }) => theme.fonts.Pretendard_Search};
     background-color: ${({ theme }) => theme.colors.Weather_Main};
     color: ${({ theme }) => theme.colors.Weather_White};
-    font-family: ${({ theme }) => theme.fonts.Pretendard_Search};
     border: none;
     border-radius: 1.5rem;
 
@@ -168,6 +167,7 @@ const St = {
 
     & > option {
       height: 2rem;
+
       background-color: ${({ theme }) => theme.colors.Weather_Background};
     }
   `,
@@ -188,6 +188,7 @@ const St = {
 
     background-color: ${({ theme }) => theme.colors.Weather_White};
     border-radius: 1rem;
+
     opacity: 0.9;
   `,
 

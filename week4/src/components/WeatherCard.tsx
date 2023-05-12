@@ -92,30 +92,35 @@ const St = {
 
     border-radius: 1rem;
   `,
+
   Date: styled.h2`
     padding-top: 2rem;
 
     font-family: ${({ theme }) => theme.fonts.Pretendard_Content1};
     color: ${({ theme }) => theme.colors.Weather_White};
   `,
+
   Temperature: styled.span`
     padding-top: 1rem;
 
     font-family: ${({ theme }) => theme.fonts.Pretendard_Temperature};
     color: ${({ theme }) => theme.colors.Weather_White};
   `,
+
   SubTemperature: styled.span`
     margin-top: -0.5rem;
 
     font-family: ${({ theme }) => theme.fonts.Pretendard_Content1};
     color: ${({ theme }) => theme.colors.Weather_White};
   `,
+
   WeatherIcon: styled.img`
     width: 15rem;
     height: 10rem;
 
     padding-top: 1rem;
   `,
+
   SubInfo: styled.div`
     display: flex;
     gap: 1rem;

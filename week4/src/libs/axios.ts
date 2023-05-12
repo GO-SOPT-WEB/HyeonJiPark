@@ -5,5 +5,3 @@ export const client = axios.create({
 });
 
 export const getFetcher = (url: string) => client.get(url).then((res) => res.data);
-
-// export { client };

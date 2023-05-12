@@ -6,9 +6,6 @@ declare module 'styled-components' {
       Weather_Background: string;
       Weather_Main: string;
       Weather_White: string;
-      Weather_Sky: string;
-      Weather_Cloud: string;
-      Weather_Rain: string;
     };
     fonts: {
       Pretendard_Title: SerializedStyles;

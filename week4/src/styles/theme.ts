@@ -4,9 +4,6 @@ const colors = {
   Weather_Background: '#DFF0FF',
   Weather_Main: '#44A2FA',
   Weather_White: '#ffffff',
-  Weather_Sky: '#a8ecfd',
-  Weather_Cloud: '#80aff1',
-  Weather_Rain: '#003b71',
 };
 
 const fonts = {
