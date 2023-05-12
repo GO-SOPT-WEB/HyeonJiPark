@@ -10,7 +10,7 @@ interface WeatherCardProps {
 
 const WeatherCard = ({ weather }: WeatherCardProps) => {
   if (!weather) return null;
-
+  console.log(weather);
   const {
     name,
     weather: [{ description }],
@@ -21,6 +21,7 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
   const weatherType = WEATHER_TYPE.find(
     (weather: weatherType) => weather.description === description,
   );
+  const date = dt_txt?.substring(5, 10);
 
   const handleWeatherBackground = () => {
     switch (description) {
@@ -49,15 +50,30 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
 
   return (
     <St.WeatherCardWrapper background={handleWeatherBackground()}>
-      <p>지역: {name}</p>
-      <p>날씨: {description}</p>
-      <p>날짜: {dt_txt}</p>
-      <img src={weatherType?.imgURL} alt={weatherType?.description} />
-      <p>온도 : {temp}</p>
-      <span>최저: {temp_min}</span>
-      <span>최고: {temp_max}</span>
-      <p>체감온도: {feels_like}</p>
-      <p>구름: {all}</p>
+      {/* <p>지역: {name}</p> */}
+      {/* <p>날씨: {description}</p> */}
+      <St.Date>{date}</St.Date>
+      <St.Temperature>
+        {temp}
+        <span> °C</span>
+      </St.Temperature>
+      <St.SubTemperature>
+        <span>{temp_max}°C</span>
+        <span> | </span>
+        <span>{temp_min}°C</span>
+      </St.SubTemperature>
+      <St.WeatherIcon src={weatherType?.imgURL} alt={weatherType?.description} />
+
+      <St.SubInfo>
+        <div>
+          <p>체감온도</p>
+          {feels_like}
+        </div>
+        <div>
+          <p>구름</p>
+          {all}
+        </div>
+      </St.SubInfo>
     </St.WeatherCardWrapper>
   );
 };
@@ -68,6 +84,7 @@ const St = {
   WeatherCardWrapper: styled.article<{ background: string }>`
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 
     width: 25rem;
@@ -79,10 +96,50 @@ const St = {
     background-repeat: no-repeat;
 
     border-radius: 1rem;
+  `,
+  Date: styled.h2`
+    padding-top: 2rem;
 
-    & > img {
-      width: 15rem;
-      height: 15rem;
+    ${({ theme }) => theme.fonts.Pretendard_Content1};
+    color: ${({ theme }) => theme.colors.Weather_White};
+  `,
+  Temperature: styled.span`
+    padding-top: 1rem;
+
+    ${({ theme }) => theme.fonts.Pretendard_Temperature};
+    color: ${({ theme }) => theme.colors.Weather_White};
+  `,
+  SubTemperature: styled.span`
+    margin-top: -0.5rem;
+    ${({ theme }) => theme.fonts.Pretendard_Content1};
+    color: ${({ theme }) => theme.colors.Weather_White};
+  `,
+  WeatherIcon: styled.img`
+    width: 15rem;
+    height: 10rem;
+
+    padding-top: 1rem;
+  `,
+  SubInfo: styled.div`
+    display: flex;
+    gap: 1rem;
+
+    padding-top: 9rem;
+    padding-bottom: 2rem;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      width: 8rem;
+      height: 6rem;
+
+      ${({ theme }) => theme.fonts.Pretendard_Content2};
+      background: rgba(107, 107, 107, 0.3);
+      color: ${({ theme }) => theme.colors.Weather_White};
+      border-radius: 1rem;
     }
   `,
 };

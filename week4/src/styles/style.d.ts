@@ -13,6 +13,7 @@ declare module 'styled-components' {
     fonts: {
       Pretendard_Title: SerializedStyles;
       Pretendard_Search: SerializedStyles;
+      Pretendard_Temperature: SerializedStyles;
       Pretendard_Content1: SerializedStyles;
       Pretendard_Content2: SerializedStyles;
     };

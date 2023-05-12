@@ -25,11 +25,18 @@ const fonts = {
     font-style: normal;
     line-height: 3rem;
   `,
+  Pretendard_Temperature: css`
+    font-family: 'Pretendard-Regular';
+    font-size: 5rem;
+    font-weight: 900;
+    font-style: normal;
+    line-height: 5rem;
+  `,
   Pretendard_Content1: css`
     font-family: 'Pretendard-Regular';
     font-style: normal;
-    font-weight: 600;
-    font-size: 2rem;
+    font-weight: 200;
+    font-size: 2.8rem;
     line-height: 2.4rem;
   `,
   Pretendard_Content2: css`

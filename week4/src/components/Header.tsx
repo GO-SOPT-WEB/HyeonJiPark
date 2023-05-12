@@ -2,7 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Header = () => {
-  return <St.HeaderWrapper>Weather Forecast</St.HeaderWrapper>;
+  return (
+    <St.HeaderWrapper>
+      <h1>Weather Forecast</h1>
+    </St.HeaderWrapper>
+  );
 };
 
 export default Header;
@@ -14,7 +18,9 @@ const St = {
 
     padding: 2rem 5rem;
 
-    color: ${({ theme }) => theme.colors.Weather_Main};
-    ${({ theme }) => theme.fonts.Pretendard_Title};
+    & h1 {
+      color: ${({ theme }) => theme.colors.Weather_Main};
+      ${({ theme }) => theme.fonts.Pretendard_Title};
+    }
   `,
 };
