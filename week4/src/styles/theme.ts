@@ -13,7 +13,7 @@ const fonts = {
   Pretendard_Title: css`
     font-family: 'Pretendard-Regular';
     font-size: 2.5rem;
-    font-weight: 900;
+    font-weight: 800;
     font-style: normal;
     line-height: 4rem;
   `,
@@ -27,7 +27,7 @@ const fonts = {
   `,
   Pretendard_Temperature: css`
     font-family: 'Pretendard-Regular';
-    font-size: 5rem;
+    font-size: 4.5rem;
     font-weight: 900;
     font-style: normal;
     line-height: 5rem;
@@ -35,7 +35,7 @@ const fonts = {
   Pretendard_Content1: css`
     font-family: 'Pretendard-Regular';
     font-style: normal;
-    font-weight: 200;
+    font-weight: 500;
     font-size: 2.8rem;
     line-height: 2.4rem;
   `,
@@ -43,7 +43,7 @@ const fonts = {
     font-family: 'Pretendard-Regular';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     line-height: 1.9rem;
   `,
 };

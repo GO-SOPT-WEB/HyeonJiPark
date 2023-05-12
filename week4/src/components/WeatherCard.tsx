@@ -51,7 +51,6 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
   return (
     <St.WeatherCardWrapper background={handleWeatherBackground()}>
       {/* <p>지역: {name}</p> */}
-      {/* <p>날씨: {description}</p> */}
       <St.Date>{date}</St.Date>
       <St.Temperature>
         {temp}
@@ -63,7 +62,6 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
         <span>{temp_min}°C</span>
       </St.SubTemperature>
       <St.WeatherIcon src={weatherType?.imgURL} alt={weatherType?.description} />
-
       <St.SubInfo>
         <div>
           <p>체감온도</p>
@@ -100,18 +98,19 @@ const St = {
   Date: styled.h2`
     padding-top: 2rem;
 
-    ${({ theme }) => theme.fonts.Pretendard_Content1};
+    font-family: ${({ theme }) => theme.fonts.Pretendard_Content1};
     color: ${({ theme }) => theme.colors.Weather_White};
   `,
   Temperature: styled.span`
     padding-top: 1rem;
 
-    ${({ theme }) => theme.fonts.Pretendard_Temperature};
+    font-family: ${({ theme }) => theme.fonts.Pretendard_Temperature};
     color: ${({ theme }) => theme.colors.Weather_White};
   `,
   SubTemperature: styled.span`
     margin-top: -0.5rem;
-    ${({ theme }) => theme.fonts.Pretendard_Content1};
+
+    font-family: ${({ theme }) => theme.fonts.Pretendard_Content1};
     color: ${({ theme }) => theme.colors.Weather_White};
   `,
   WeatherIcon: styled.img`
@@ -136,7 +135,7 @@ const St = {
       width: 8rem;
       height: 6rem;
 
-      ${({ theme }) => theme.fonts.Pretendard_Content2};
+      font-family: ${({ theme }) => theme.fonts.Pretendard_Content2};
       background: rgba(107, 107, 107, 0.3);
       color: ${({ theme }) => theme.colors.Weather_White};
       border-radius: 1rem;

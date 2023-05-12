@@ -24,7 +24,7 @@ const St = {
 
     & h1 {
       color: ${({ theme }) => theme.colors.Weather_Main};
-      ${({ theme }) => theme.fonts.Pretendard_Title};
+      font-family: ${({ theme }) => theme.fonts.Pretendard_Title};
 
       cursor: pointer;
     }
