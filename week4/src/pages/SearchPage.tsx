@@ -41,6 +41,6 @@ const St = {
     align-items: center;
     gap: 1rem;
 
-    padding: 5rem 2rem;
+    padding: 2rem;
   `,
 };

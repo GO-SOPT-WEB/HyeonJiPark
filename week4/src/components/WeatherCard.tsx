@@ -10,9 +10,7 @@ interface WeatherCardProps {
 
 const WeatherCard = ({ weather }: WeatherCardProps) => {
   if (!weather) return null;
-  console.log(weather);
   const {
-    name,
     weather: [{ description }],
     main: { temp, feels_like, temp_min, temp_max },
     clouds: { all },
@@ -50,7 +48,6 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
 
   return (
     <St.WeatherCardWrapper background={handleWeatherBackground()}>
-      {/* <p>지역: {name}</p> */}
       <St.Date>{date}</St.Date>
       <St.Temperature>
         {temp}
@@ -123,7 +120,7 @@ const St = {
     display: flex;
     gap: 1rem;
 
-    padding-top: 9rem;
+    padding-top: 8rem;
     padding-bottom: 2rem;
 
     & > div {

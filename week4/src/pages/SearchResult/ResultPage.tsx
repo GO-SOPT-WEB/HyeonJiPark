@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useGetDailyWeather, useGetWeeklyWeather } from '../../hooks/useGetWeather';
 import WeatherCard from '../../components/WeatherCard';
 import { GetFiveDayWeatherInfo, WeatherInfo } from '../../types/weatherInfo';
+import { IcLocation } from '../../assets/icons';
+import { styled } from 'styled-components';
 
 type ResultData = {
   dailyWeatherInfo?: WeatherInfo;
@@ -25,21 +27,56 @@ const ResultPage = () => {
   if (isLoading) return null;
   if (isError) return null;
 
-  console.log(weeklyWeatherInfo);
-
   return (
-    <>
-      {forecastType === 'daily' ? (
-        <WeatherCard weather={dailyWeatherInfo as WeatherInfo} />
-      ) : (
-        <>
-          {fiveDayWeather.map((weather: WeatherInfo) => (
-            <WeatherCard key={weather.dt} weather={weather} />
-          ))}
-        </>
-      )}
-    </>
+    <St.ResultWrapper>
+      <St.Location>
+        <img src={IcLocation} alt='location' />
+        <span>{location.toUpperCase()}</span>
+      </St.Location>
+      <St.WeatherWrapper>
+        {forecastType === 'daily' ? (
+          <WeatherCard weather={dailyWeatherInfo as WeatherInfo} />
+        ) : (
+          <>
+            {fiveDayWeather.map((weather: WeatherInfo) => (
+              <WeatherCard key={weather.dt} weather={weather} />
+            ))}
+          </>
+        )}
+      </St.WeatherWrapper>
+    </St.ResultWrapper>
   );
 };
 
 export default ResultPage;
+
+const St = {
+  ResultWrapper: styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  `,
+  WeatherWrapper: styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 0rem 1rem;
+    width: 100vw;
+  `,
+  Location: styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > span {
+      font-family: ${({ theme }) => theme.fonts.Pretendard_Content1};
+    }
+    & > img {
+      width: 3.5rem;
+    }
+  `,
+};

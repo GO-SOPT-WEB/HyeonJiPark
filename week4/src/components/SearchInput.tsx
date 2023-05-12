@@ -42,7 +42,6 @@ const SearchInput = () => {
 
   const handleforecastType = (e: ChangeEvent<HTMLSelectElement>) => {
     setForecastType(e.target.value);
-    // navigate(`/${forecastType}/${input}`);
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

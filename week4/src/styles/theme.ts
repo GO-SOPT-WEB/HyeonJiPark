@@ -37,7 +37,7 @@ const fonts = {
     font-style: normal;
     font-weight: 500;
     font-size: 2.8rem;
-    line-height: 2.4rem;
+    line-height: 2.8rem;
   `,
   Pretendard_Content2: css`
     font-family: 'Pretendard-Regular';
