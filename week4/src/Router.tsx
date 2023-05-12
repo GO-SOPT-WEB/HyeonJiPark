@@ -9,7 +9,7 @@ const Router = () => {
       <Suspense>
         <Routes>
           <Route path='/' element={<SearchPage />}>
-            <Route path=':location' element={<ResultPage />} />
+            <Route path='/:forecastType/:location' element={<ResultPage />} />
           </Route>
         </Routes>
       </Suspense>

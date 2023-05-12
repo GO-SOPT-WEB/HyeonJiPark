@@ -6,12 +6,25 @@ import { useNavigate } from 'react-router-dom';
 
 const SearchInput = () => {
   const [input, setInput] = useState('');
+  const [forecastType, setForecastType] = useState('daily');
+
   const inputRef = useRef<HTMLInputElement>(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     inputRef?.current?.focus();
   });
+
+  useEffect(() => {
+    if (input !== '') {
+      navigate(`/${forecastType}/${input}`);
+    }
+  }, [forecastType]);
+
+  const handleforecastType = (e: ChangeEvent<HTMLSelectElement>) => {
+    setForecastType(e.target.value);
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -22,13 +35,16 @@ const SearchInput = () => {
     if (input === '') {
       alert('지역을 입력하세요');
     } else {
-      navigate(`/${input}`);
+      navigate(`/${forecastType}/${input}`);
     }
-    setInput('');
   };
 
   return (
     <St.SearchInputWrapper>
+      <select value={forecastType} onChange={handleforecastType}>
+        <option value='daily'>일간</option>
+        <option value='weekly'>주간</option>
+      </select>
       <img src={IcLocation} alt='location' />
       <form onSubmit={handleSubmit}>
         <input
