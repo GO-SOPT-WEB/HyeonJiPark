@@ -5,6 +5,7 @@ import WeatherCard from '../../components/WeatherCard';
 import { GetFiveDayWeatherInfo, WeatherInfo } from '../../types/weatherInfo';
 import { IcLocation } from '../../assets/icons';
 import { styled } from 'styled-components';
+import Loading from '../../components/Loading';
 
 type ResultData = {
   dailyWeatherInfo?: WeatherInfo;
@@ -24,7 +25,7 @@ const ResultPage = () => {
     fiveDayWeather = weeklyWeatherInfo.list.filter((_, index) => index % 8 === 0);
   }
 
-  if (isLoading) return null;
+  if (isLoading) return <Loading />;
   if (isError) return null;
 
   return (
