@@ -1,8 +1,8 @@
 import { css, DefaultTheme } from 'styled-components';
 
 const colors = {
-  Weather_Background: '#F8F8FF',
-  Weather_Main: '#94A1FF',
+  Weather_Background: '#DFF0FF',
+  Weather_Main: '#5AB9F3',
   Weather_White: '#ffffff',
   Weather_Sky: '#a8ecfd',
   Weather_Cloud: '#80aff1',
