@@ -2,7 +2,7 @@ import { css, DefaultTheme } from 'styled-components';
 
 const colors = {
   Weather_Background: '#DFF0FF',
-  Weather_Main: '#5AB9F3',
+  Weather_Main: '#44A2FA',
   Weather_White: '#ffffff',
   Weather_Sky: '#a8ecfd',
   Weather_Cloud: '#80aff1',

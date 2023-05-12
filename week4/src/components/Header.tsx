@@ -2,9 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Header = () => {
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   return (
     <St.HeaderWrapper>
-      <h1>Weather Forecast</h1>
+      <h1 onClick={handleRefresh}>WEATHER FOREST</h1>
     </St.HeaderWrapper>
   );
 };
@@ -21,6 +25,8 @@ const St = {
     & h1 {
       color: ${({ theme }) => theme.colors.Weather_Main};
       ${({ theme }) => theme.fonts.Pretendard_Title};
+
+      cursor: pointer;
     }
   `,
 };
