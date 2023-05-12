@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <St.HeaderWrapper>
-      <h1 onClick={handleRefresh}>WEATHER FOREST</h1>
+      <h1 onClick={handleRefresh}>WEATHER FORECAST</h1>
     </St.HeaderWrapper>
   );
 };
