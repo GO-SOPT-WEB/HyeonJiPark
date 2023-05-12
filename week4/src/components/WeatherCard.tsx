@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { WeatherInfo, weatherType } from '../types/weatherInfo';
 import { WEATHER_TYPE } from '../constants/weather';
+import { BgClear, BgCloud, BgMist, BgRain, BgSnowThunder } from '../assets/backgrounds';
 
 interface WeatherCardProps {
   weather: WeatherInfo;
@@ -21,8 +22,33 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
     (weather: weatherType) => weather.description === description,
   );
 
+  const handleWeatherBackground = () => {
+    switch (description) {
+      case 'clear sky':
+        return BgClear;
+      case 'few clouds':
+      case 'broken clouds':
+      case 'overcast clouds':
+      case 'scattered clouds':
+        return BgCloud;
+      case 'rain':
+      case 'light rain':
+      case 'shower rain':
+      case 'moderate rain':
+      case 'heavy intensity rain':
+        return BgRain;
+      case 'mist':
+        return BgMist;
+      case 'snow':
+      case 'thunderstorm':
+        return BgSnowThunder;
+      default:
+        return '';
+    }
+  };
+
   return (
-    <St.WeatherCardWrapper>
+    <St.WeatherCardWrapper background={handleWeatherBackground()}>
       <p>지역: {name}</p>
       <p>날씨: {description}</p>
       <p>날짜: {dt_txt}</p>
@@ -39,14 +65,19 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
 export default WeatherCard;
 
 const St = {
-  WeatherCardWrapper: styled.article`
+  WeatherCardWrapper: styled.article<{ background: string }>`
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     width: 25rem;
     height: 40rem;
 
-    background-color: ${({ theme }) => theme.colors.Weather_Main};
+    background-image: url(${(props) => props.background});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     border-radius: 1rem;
 
     & > img {
