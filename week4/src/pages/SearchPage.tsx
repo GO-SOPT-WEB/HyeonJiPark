@@ -9,9 +9,9 @@ const SearchPage = () => {
     <St.SearchPageWrapper>
       <Header />
       <SearchInput />
-      <St.WeatherWrapper>
+      <St.SearchResultWrapper>
         <Outlet />
-      </St.WeatherWrapper>
+      </St.SearchResultWrapper>
     </St.SearchPageWrapper>
   );
 };
@@ -25,11 +25,12 @@ const St = {
     background-color: ${({ theme }) => theme.colors.Weather_Background};
   `,
 
-  WeatherWrapper: styled.section`
+  SearchResultWrapper: styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 
-    padding-top: 5rem;
+    padding: 5rem 2rem;
   `,
 };

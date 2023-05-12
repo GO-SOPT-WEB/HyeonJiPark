@@ -28,7 +28,10 @@ export const WEATHER_TYPE: weatherType[] = [
     description: 'overcast clouds',
     imgURL: IcCloud1,
   },
-
+  {
+    description: 'light rain',
+    imgURL: IcRain1,
+  },
   {
     description: 'heavy intensity rain',
     imgURL: IcRain1,
