@@ -7,6 +7,8 @@ interface WeatherCardProps {
 }
 
 const WeatherCard = ({ weather }: WeatherCardProps) => {
+  if (!weather) return null;
+
   const {
     name,
     weather: [{ description }],
@@ -14,6 +16,7 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
     clouds: { all },
     dt_txt,
   } = weather;
+
   return (
     <St.WeatherCardWrapper>
       <p>지역: {name}</p>

@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 import { getFetcher } from '../libs/axios';
-import { WeatherInfo } from '../types/weatherInfo';
+import { GetFiveDayWeatherInfo, WeatherInfo } from '../types/weatherInfo';
 
 export const useGetDailyWeather = (area: string) => {
   const { data, isLoading, error } = useSWR<WeatherInfo>(
@@ -18,7 +18,7 @@ export const useGetDailyWeather = (area: string) => {
 };
 
 export const useGetWeeklyWeather = (area: string) => {
-  const { data, isLoading, error } = useSWR<WeatherInfo[]>(
+  const { data, isLoading, error } = useSWR<GetFiveDayWeatherInfo>(
     `/forecast?q=${area}&appid=${import.meta.env.VITE_APP_WEATHER}&units=metric
     `,
     getFetcher,

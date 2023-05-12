@@ -4,6 +4,7 @@ export interface weatherType {
 }
 
 export interface WeatherInfo {
+  dt: number;
   name: string; // 지역이름
   weather: [
     {
