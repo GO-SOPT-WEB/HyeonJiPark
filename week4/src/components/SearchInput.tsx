@@ -60,7 +60,8 @@ const SearchInput = () => {
     }
   };
 
-  const handleRemoveHistory = (target: string) => {
+  const handleRemoveHistory = (e: React.MouseEvent, target: string) => {
+    e.stopPropagation();
     const newHistoryList = historyList.filter((history) => history !== target);
     setHistoryList(newHistoryList);
   };
@@ -94,7 +95,9 @@ const SearchInput = () => {
               <St.DropdownList key={history}>
                 <St.DropdownItem onClick={() => handleClickHistory(history)}>
                   {history}
-                  <St.DeleteButton onClick={() => handleRemoveHistory(history)}>X</St.DeleteButton>
+                  <St.DeleteButton onClick={(e) => handleRemoveHistory(e, history)}>
+                    X
+                  </St.DeleteButton>
                 </St.DropdownItem>
               </St.DropdownList>
             ))}
@@ -209,6 +212,8 @@ const St = {
     padding: 1rem 2rem;
 
     font-family: ${({ theme }) => theme.fonts.Pretendard_Search};
+
+    cursor: pointer;
   `,
 
   DeleteButton: styled.button`
