@@ -39,7 +39,6 @@ const St = {
 
     width: 25rem;
     height: 40rem;
-    margin-top: 5.5rem;
 
     background: #e4e4e4;
     border-radius: 1rem;

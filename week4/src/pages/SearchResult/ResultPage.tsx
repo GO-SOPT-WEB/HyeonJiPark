@@ -25,7 +25,6 @@ const ResultPage = () => {
     fiveDayWeather = weeklyWeatherInfo.list.filter((_, index) => index % 8 === 0);
   }
 
-  if (isLoading) return <Loading />;
   if (isError) return null;
 
   return (
@@ -36,13 +35,19 @@ const ResultPage = () => {
       </St.Location>
       <St.WeatherWrapper>
         {forecastType === 'daily' ? (
-          <WeatherCard weather={dailyWeatherInfo as WeatherInfo} />
+          isLoading ? (
+            <Loading />
+          ) : (
+            <WeatherCard weather={dailyWeatherInfo as WeatherInfo} />
+          )
         ) : (
-          <>
-            {fiveDayWeather.map((weather: WeatherInfo) => (
-              <WeatherCard key={weather.dt} weather={weather} />
-            ))}
-          </>
+          Array.from({ length: 5 }).map((_, index) =>
+            isLoading ? (
+              <Loading key={index} />
+            ) : (
+              <WeatherCard key={index} weather={fiveDayWeather[index]} />
+            ),
+          )
         )}
       </St.WeatherWrapper>
     </St.ResultWrapper>
