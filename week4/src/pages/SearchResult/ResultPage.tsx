@@ -11,7 +11,7 @@ const ResultPage = () => {
   if (isLoading) return null;
   if (isError) return null;
 
-  return dailyWeatherInfo && <WeatherCard weather={dailyWeatherInfo as WeatherInfo} />;
+  return <WeatherCard weather={dailyWeatherInfo as WeatherInfo} />;
 };
 
 export default ResultPage;

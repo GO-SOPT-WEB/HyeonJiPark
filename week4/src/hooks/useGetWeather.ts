@@ -11,7 +11,7 @@ export const useGetDailyWeather = (area: string) => {
     },
   );
   return {
-    dailyWeatherInfo: data || null,
+    dailyWeatherInfo: data,
     isLoading,
     isError: error,
   };
