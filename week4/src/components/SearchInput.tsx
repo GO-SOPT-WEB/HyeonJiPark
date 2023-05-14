@@ -1,4 +1,4 @@
-import React, { useState, useMemo, ChangeEvent, useRef, useEffect } from 'react';
+import React, { useState, ChangeEvent, useRef, useEffect } from 'react';
 import { styled } from 'styled-components';
 
 import { IcLocation } from '../assets/icons';

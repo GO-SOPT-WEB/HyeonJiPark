@@ -1,4 +1,3 @@
-import React from 'react';
 import { keyframes, styled } from 'styled-components';
 
 const Loading = () => {

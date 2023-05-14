@@ -1,4 +1,3 @@
-import React from 'react';
 import { styled } from 'styled-components';
 import { WeatherInfo, weatherType } from '../types/weatherInfo';
 import { WEATHER_TYPE } from '../constants/weather';
