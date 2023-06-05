@@ -1,0 +1,11 @@
+export { default as IcClear } from './ic_clear.svg';
+export { default as IcCloud1 } from './ic_cloud_1.svg';
+export { default as IcCloud2 } from './ic_cloud_2.svg';
+export { default as IcCloud3 } from './ic_cloud_3.svg';
+export { default as IcLocation } from './ic_location.svg';
+export { default as IcMist } from './ic_mist.svg';
+export { default as IcRain1 } from './ic_rain_1.svg';
+export { default as IcRain2 } from './ic_rain_2.svg';
+export { default as IcSnow } from './ic_snow.svg';
+export { default as IcThunder } from './ic_thunder.svg';
+export { default as IcError } from './ic_error.svg';
