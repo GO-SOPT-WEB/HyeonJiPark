@@ -1,0 +1,10 @@
+export { default as ImgZzangu01 } from './Img_zzangu_01.jpeg';
+export { default as ImgZzangu02 } from './Img_zzangu_02.jpeg';
+export { default as ImgZzangu03 } from './Img_zzangu_03.jpeg';
+export { default as ImgZzangu04 } from './Img_zzangu_04.jpeg';
+export { default as ImgZzangu05 } from './Img_zzangu_05.jpeg';
+export { default as ImgZzangu06 } from './Img_zzangu_06.jpeg';
+export { default as ImgZzangu07 } from './Img_zzangu_07.jpeg';
+export { default as ImgZzangu08 } from './Img_zzangu_08.jpeg';
+export { default as ImgZzangu09 } from './Img_zzangu_09.jpeg';
+export { default as ImgZzanguBack } from './Img_zzangu_Back.svg';
