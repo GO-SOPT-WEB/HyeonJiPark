@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css" />
+
+  <script type="module" src="product.js" defer></script>
+  <title>Apple Store</title>
+</head>
+
+<body>
+  <header class="header_wrapper">
+    <div class="logo_wrapper">
+      <img src="images/img_apple.png" alt="애플_로고" />
+      <h1>Apple Store</h1>
+    </div>
+    <nav class="hamburger_menu">
+      <img src="icons/ic_hamburger.svg" alt="햄버거-아이콘" />
+      <div class="hamburger_wrapper">
+        <h2>Menu</h2>
+        <ul>
+          <li>새 상품 추가</li>
+          <li>북마크 목록</li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="category_wrapper">
+    <ul>
+      <li class="category_item" data-category="All">
+        <img class="ic_all" src="icons/ic_apple_transparent.svg" alt="All-아이콘" />
+        <p>All</p>
+      </li>
+      <li class="category_item" data-category="MacBook">
+        <img class="ic_macbook" src="icons/ic_macbook.svg" alt="맥북-아이콘" />
+        <p>MacBook</p>
+      </li>
+      <li class="category_item" data-category="iPad">
+        <img class="ic_ipad" src="icons/ic_ipad.svg" alt="아이패드-아이콘" />
+        <p>iPad</p>
+      </li>
+      <li class="category_item" data-category="iPhone">
+        <img class="ic_iphone" src="icons/ic_iphone.svg" alt="아이폰-아이콘" />
+        <p>iPhone</p>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="filter_wrapper">
+    <ul class="filter_list">
+
+    </ul>
+  </section>
+
+  <section class="product"></section>
+</body>
+
+</html>
