@@ -90,7 +90,7 @@ const StButton = styled.button<{ isReset?: boolean }>`
         content: '';
         display: block;
         position: absolute;
-        top: 0;
+        top: -11%;
         left: -10%;
         z-index: -12;
         opacity: 1;
