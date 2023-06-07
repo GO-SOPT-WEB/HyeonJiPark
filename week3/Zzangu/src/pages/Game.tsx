@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
-import Header from '../components/Header';
+import { Button } from '../components/Button';
 import Card from '../components/Card';
-import ZZANGU_LIST from '../datas/zzanguList';
-import { Zzangu } from '../datas/zzanguList';
+import Header from '../components/Header';
 import Modal from '../components/Modal';
+import { EASY_MODE, HARD_MODE, NORMAL_MODE } from '../datas/mode';
+import ZZANGU_LIST, { Zzangu } from '../datas/zzanguList';
+import { ModeState, ScoreState } from '../recoil/atom';
 
 interface CardData extends Zzangu {
   answer: number;
   flipped: boolean;
   matched: boolean;
 }
-
-const EASY_MODE = 5;
-const NORMAL_MODE = 7;
-const HARD_MODE = 9;
 
 // 출제할 카드 섞기
 const shuffleCards = (cards: Zzangu[]): Zzangu[] => {
@@ -38,8 +37,8 @@ const createCards = (cards: Zzangu[], mode: number): CardData[] => {
 };
 
 const Game = () => {
-  const [mode, setMode] = useState(EASY_MODE);
-  const [score, setScore] = useState(0);
+  const [mode, setMode] = useRecoilState(ModeState);
+  const [score, setScore] = useRecoilState(ScoreState);
   const [isOver, setIsOver] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -134,20 +133,14 @@ const Game = () => {
 
   return (
     <GameWrapper>
-      <Header mode={mode} score={score} />
+      <Header />
       <StMode>
-        <button className='modeBtn' type='button' onClick={() => changeMode(EASY_MODE)}>
-          EASY
-        </button>
-        <button className='modeBtn' type='button' onClick={() => changeMode(NORMAL_MODE)}>
-          NORMAL
-        </button>
-        <button className='modeBtn' type='button' onClick={() => changeMode(HARD_MODE)}>
-          HARD
-        </button>
-        <button className='resetBtn' type='button' onClick={handleReset}>
+        <Button onClick={() => changeMode(EASY_MODE)}>EASY</Button>
+        <Button onClick={() => changeMode(NORMAL_MODE)}>NORMAL</Button>
+        <Button onClick={() => changeMode(HARD_MODE)}>HARD</Button>
+        <Button onClick={handleReset} isReset>
           RESET
-        </button>
+        </Button>
       </StMode>
       <StCards>{displayCards()}</StCards>
       {isModalOpen && (
@@ -178,127 +171,6 @@ const StMode = styled.nav`
   gap: 2rem;
 
   height: 7rem;
-
-  & > .modeBtn {
-    padding: 1rem 2rem;
-    ${({ theme }) => theme.fonts.ZZangu_Button2};
-
-    color: ${({ theme }) => theme.colors.Zzangu_PinkBorder};
-    background: ${({ theme }) => theme.colors.Zzangu_LightPink};
-    border: 0.2rem solid ${({ theme }) => theme.colors.Zzangu_PinkBorder};
-    border-radius: 1.5rem;
-    transform-style: preserve-3d;
-    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1);
-
-    &::before {
-      content: '';
-
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 100%;
-
-      background: ${({ theme }) => theme.colors.Zzangu_DarkPink};
-      border-radius: inherit;
-      box-shadow: 0 0 0 0.2rem ${({ theme }) => theme.colors.Zzangu_PinkBorder};
-
-      transform: translate3d(0, 0.75rem, -1rem);
-      transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
-        box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
-    }
-
-    &:hover {
-      background: ${({ theme }) => theme.colors.Zzangu_Pink};
-      transform: translate(0, 0.25em);
-
-      &::before {
-        box-shadow: 0 0 0 0.2rem ${({ theme }) => theme.colors.Zzangu_PinkBorder},
-          0 0.5rem 0 0 ${({ theme }) => theme.colors.Zzangu_PinkShadow};
-        transform: translate3d(0, 0.5rem, -1rem);
-      }
-    }
-
-    &:active {
-      background: ${({ theme }) => theme.colors.Zzangu_Pink};
-      transform: translate(0rem, 0.75rem);
-
-      &::before {
-        box-shadow: 0 0 0 0.2rem ${({ theme }) => theme.colors.Zzangu_PinkBorder},
-          0 0 ${({ theme }) => theme.colors.Zzangu_PinkShadow};
-        transform: translate3d(0, 0, -1em);
-      }
-    }
-  }
-
-  & > .resetBtn {
-    position: absolute;
-    right: 11%;
-    overflow: hidden;
-    z-index: 10;
-
-    padding: 1rem 4rem;
-
-    color: ${({ theme }) => theme.colors.Zzangu_YellowBorder};
-    background: ${({ theme }) => theme.colors.Zzangu_Yellow};
-    ${({ theme }) => theme.fonts.ZZangu_Button1};
-    border: 0.3rem solid ${({ theme }) => theme.colors.Zzangu_YellowBorder};
-    border-radius: 5rem;
-
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      border: 0.1rem solid ${({ theme }) => theme.colors.Zzangu_YellowBorder};
-      color: ${({ theme }) => theme.colors.Zzangu_White};
-    }
-    &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: -10%;
-      z-index: -12;
-      opacity: 1;
-
-      width: 0%;
-      height: 100%;
-
-      background: ${({ theme }) => theme.colors.Zzangu_YellowBorder};
-
-      transform: skewX(-20deg);
-      transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
-      box-shadow: 0.2rem 0rem 1.4rem rgba(0, 0, 0, 0.6);
-    }
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: -10%;
-      z-index: -15;
-      opacity: 0;
-
-      width: 0%;
-      height: 100%;
-
-      background: ${({ theme }) => theme.colors.Zzangu_White};
-
-      transform: skewX(-20deg);
-      transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
-      box-shadow: 0.2rem, 0rem 1.4rem rgba(0, 0, 0, 0.6);
-    }
-    &:hover::before {
-      opacity: 1;
-
-      width: 116%;
-    }
-    &:hover::after {
-      opacity: 1;
-
-      width: 120%;
-    }
-  }
 `;
 
 const StCards = styled.section`

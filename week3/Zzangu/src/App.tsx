@@ -1,7 +1,8 @@
 import { ThemeProvider } from 'styled-components';
+
+import Game from './pages/Game';
 import GlobalStyle from './styles/GlobalStyle';
 import theme from './styles/theme';
-import Game from './pages/Game';
 
 function App() {
   return (
