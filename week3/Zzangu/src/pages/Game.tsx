@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import Card from '../components/Card';
@@ -6,6 +7,7 @@ import Header from '../components/Header';
 import Modal from '../components/Modal';
 import { EASY_MODE, HARD_MODE, NORMAL_MODE } from '../datas/mode';
 import ZZANGU_LIST, { Zzangu } from '../datas/zzanguList';
+import { ModeState, ScoreState } from '../recoil/atom';
 
 interface CardData extends Zzangu {
   answer: number;
@@ -34,8 +36,8 @@ const createCards = (cards: Zzangu[], mode: number): CardData[] => {
 };
 
 const Game = () => {
-  const [mode, setMode] = useState(EASY_MODE);
-  const [score, setScore] = useState(0);
+  const [mode, setMode] = useRecoilState(ModeState);
+  const [score, setScore] = useRecoilState(ScoreState);
   const [isOver, setIsOver] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
