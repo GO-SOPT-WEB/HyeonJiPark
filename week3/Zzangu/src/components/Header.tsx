@@ -1,12 +1,13 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
-interface HeaderProps {
-  mode: number;
-  score: number;
-}
+import { ModeState, ScoreState } from '../recoil/atom';
 
-const Header = ({ mode, score }: HeaderProps) => {
+const Header = () => {
+  const mode = useRecoilValue(ModeState);
+  const score = useRecoilValue(ScoreState);
+
   return (
     <StHeader>
       <h1>짱구는 못말려!</h1>
