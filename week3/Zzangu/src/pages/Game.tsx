@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import Header from '../components/Header';
 import Card from '../components/Card';
-import ZZANGU_LIST from '../datas/zzanguList';
-import { Zzangu } from '../datas/zzanguList';
+import Header from '../components/Header';
 import Modal from '../components/Modal';
+import { EASY_MODE, HARD_MODE, NORMAL_MODE } from '../datas/mode';
+import ZZANGU_LIST, { Zzangu } from '../datas/zzanguList';
 
 interface CardData extends Zzangu {
   answer: number;
   flipped: boolean;
   matched: boolean;
 }
-
-const EASY_MODE = 5;
-const NORMAL_MODE = 7;
-const HARD_MODE = 9;
 
 // 출제할 카드 섞기
 const shuffleCards = (cards: Zzangu[]): Zzangu[] => {
